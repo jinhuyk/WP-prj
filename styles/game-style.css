@@ -1,0 +1,22 @@
+#game-screen {
+    margin: 0 auto;
+    border: 1px solid red;
+}
+
+.slide-selectbar {
+    width: 200px;
+    height:200px;
+    text-align: center;
+    line-height: 250px;
+	position:relative;
+    border: 2px solid red;
+}
+.alt{
+    display: none;
+}
+.side-selectbar img{
+	position: absolute;
+	top: 0;
+	left: 0;
+	border:5px solid red;
+}
