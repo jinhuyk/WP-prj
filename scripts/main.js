@@ -1,4 +1,12 @@
 $(document).ready(function(){
+    $(".menu-button").mouseover(function(){
+        $(this).css({"font" : "19px", "font-weight" : "bold","background-color" : "grey"});
+    })
+
+    $(".menu-button").mouseout(function(){
+        $(this).css({"font" : "18px", "font-weight" : "normal", "background-color" : "white"});
+    })
+
     $("#game-description").click(function(){
         var content = "#game-description-content";
         $(content).addClass("popup");
@@ -35,6 +43,22 @@ $(document).ready(function(){
         $(".popup").hide();
     });
 
+    $("#volon").click(function(){
+        var audio=document.getElementById("audio");
+        
+        if(audio.paused){
+            audio.play();
+        }
+
+    })
+
+    $("#voloff").click(function(){
+        var audio=document.getElementById("audio");
+        audio.pause();
+    })
+    $("#game-start-btn").click(function(){
+        window.location.replace("game.html")
+    })
 })
 
 function change_position(obj){

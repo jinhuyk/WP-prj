@@ -4,7 +4,7 @@ function ballPosCheck(){
         dy = -dy;
     } else if(y + dy > canvas.height-ballRadius) {
   
-        document.location.reload();
+        dy = -dy;
     }
     if(x+dx < ballRadius || x+dx > canvas.width-ballRadius) dx = -dx;
 

@@ -23,3 +23,10 @@ var y = canvas.height-30;
 var dx = 2;
 var dy = -2;
 var ballRadius = 10;
+
+//
+var level;
+
+//
+var min;
+var second;
