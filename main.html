@@ -4,17 +4,18 @@
 <head>
     <title>웹프로그래밍 7팀</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
     <link rel="stylesheet" type="text/css" href="styles/style.css">
 </head>
 <body>
+    
     <div id="page-wrapper">
-        <header id="main-title"><h1>KU의 동물농장</h1></header>
+        <header id="main-title"><img src="resources/img/logo.png" width="600px"></header>
 
         <div id="main-menu">
-            <button class="menu-button" id="game-start-btn"><h1>게임 시작</h1></button>
-            <button id="game-description" class="menu-button"><h1>게임 설명</h1></button>
+            <img class="menu-button" id="game-start-btn" src="/resources/img/start-btn.png">
+            <img id="game-description" class="menu-button" src="/resources/img/guide-btn.png">
             <div id="game-description-content">
-
                 <input id="sec-one" type="radio" name="tab" checked="checked">
                 <input id="sec-two" type="radio" name="tab">
                 <input id="sec-three" type="radio" name="tab">
@@ -27,26 +28,36 @@
                     <label class="close_img">닫기</label>
                 </section>
                 <div class="content">
-                    어느 평화로운 농장에는 젊은 공돌이 농부가 거위 건덕이, 고양이 만쥬, 그리고 황소 쿠(KU)를 데리고 살고 있었다. 찜통더위의 어느 여름 날, 건덕이와 만쥬, 쿠는 선풍기 하나 없이 허덕이고 있다. 그런데 옆 주인집을 보니, 혼자서 에어컨을 틀고 여유롭게 누워있는 농부를 발견한다. 이에 화가 난 동물들은, 반란을 결심하고 성공한다.
-                    쫓겨난 농부(플레이어)는 의기양양한 동물들을 보고서 좌절하지만, 다시 자신의 농장을 되찾기 위해 힘차게 길을 나선다.
+                    어느 평화로운 농장에는...<br><br>
+                    젊은 공돌이 농부가 거위 건덕이, 고양이 만쥬, 그리고 황소 쿠(KU)를 데리고 살고 있었다.<br><br>
+                    찜통더위의 어느 여름 날..<br>
+                    건덕이와 만쥬, 쿠는 선풍기 하나 없이 허덕이고 있다.<br><br>
+                    그런데 옆 주인집을 보니, 혼자서 에어컨을 틀고 여유롭게 누워있는 농부를 발견한다!!!<br><br>
+                    이에 화가 난 동물들은...!<br><br>
+                    <strong>반란을 결심하고 성공한다.</strong>
+                    <br><br>
+                    쫓겨난 농부(플레이어)는 의기양양한 동물들을 보고서 좌절하지만,<br>
+                    다시 자신의 농장을 되찾기 위해 힘차게 길을 나선다...<br><br>
+                    To Be Continued...
                 </div>
                 <div class="content">
-                    단계는 총 3단계로 다음과 같이 이루어져 있습니다 :<br><br>
-                    
                     1단계 : 건덕이(거위)<br>
                     2단계 : 만쥬(고양이)<br>
                     3단계 : 쿠(황소) <br><br>
                     
-                    각 단계는 총 2라운드로 구성되어 있으며 첫번째 라운드는 일반 라운드, 두번째 라운드는 보스 라운드로 게임이 진행됩니다.<br>
+                    * 각 단계는 총 2라운드로 구성되어 있으며 첫번째 라운드는 일반 라운드, 두번째 라운드는 보스 라운드로 게임이 진행됩니다.<br>
                     
-                    일반 라운드와 다르게 보스 라운드에는 각각의 보스들(건덕이, 만쥬, 쿠)의 특별 능력이 포함된 블록들이 임의로 생성됩니디.<br>
+                    * 일반 라운드와 다르게 보스 라운드에는 각각의 보스들(건덕이, 만쥬, 쿠)의 특별 능력이 포함된 블록들이 임의로 생성됩니디.<br>
+                    <br>
+                    건덕이의 특별 능력이 부여된 블록과 충돌하면 새똥을 떨어트려 특정 위치에는 슬라이드를 배치할 수 없게 만듭니다. <br>
+                    만쥬의 특별 능력이 부여된 블록과 충돌하면 플레이어의 라이프를 하나 잃게 됩니다. <br>
+                    쿠의 특별 능력이 부여된 블록은 다른 일반 블록들과 다르게 매우 튼튼하여 3회를 충돌시켜야 블록을 제거할 수 있습니다.<br>
                     
                 </div>
                 <div class="content">
-                    한칸짜리 좁은 슬라이드, 두칸짜리 슬라이드, 네칸짜리 슬라이드, 총 세가지 슬라이드가 존재하며 게임판 외부 화면 하단에 랜덤하게 나타난다.
-                    이 슬라이드들을 드래그하여 게임판에 배치해 공을 튕겨내야 한다.
-                    게임판에 배치하면 화면 하단에 새로운 랜덤 슬라이드가 나타나며, 공을 튕겨낸 후 배치한 슬라이드는 사라진다.
-                    또한 슬라이드에 따라 배치 할 때 부여되는 “블럭 설치 속성”이 무작위로 존재한다.<br><br>
+                    도형을 클릭 후, 원하는 위치에 클릭하세요! 
+                    <br>
+                    공이 바닥에 떨어지면.. 큰일납니다!
                 </div>
                 <div class="content">
                     x2 - 공이 두배가됨<br>
@@ -56,23 +67,15 @@
                     slower - 공이 느려짐<br>
                     normal - 속성 초기화 (파괴 속성 동일)<br>
                     관통 - 블럭 3개를 관통한다.<br><br>
+                
                     
-                    블럭 파괴 속성(블럭을 파괴할때 구현되는 속성)<br>
-                    
-                    hard -단단해지는 효과 (여러번 깨야함)<br>
-                    공격 - 블럭에서 공격물체가 나옴<br>
-                    블럭 작아지기 - 공을 반사시킬 블럭이 작아짐<br>
-                    공 빨라지기 - 공이 빨라짐<br><br>
-                    건덕이의 특별 능력이 부여된 블록과 충돌하면 새똥을 떨어트려 특정 위치에는 슬라이드를 배치할 수 없게 만듭니다. <br>
-                    만쥬의 특별 능력이 부여된 블록과 충돌하면 플레이어의 라이프를 하나 잃게 됩니다. <br>
-                    쿠의 특별 능력이 부여된 블록은 다른 일반 블록들과 다르게 매우 튼튼하여 3회를 충돌시켜야 블록을 제거할 수 있습니다.<br>
                 </div>
             
 
                     
                     
             </div>
-            <button id="option" class="menu-button"><h1>설정</h1></button>
+            <img id="option" class="menu-button" src="/resources/img/setting-btn.png">
             <div id="option-content">
                 <input id="sec2-one" type="radio" name="tab2" checked="checked">
                 <input id="sec2-two" type="radio" name="tab2">
@@ -103,6 +106,7 @@
 
         
     </div>
+    <audio src="/resources/aud/main.mp3" id="audio" autoplay ></audio>
     <script src="scripts/main.js"></script>
 </body>
 </html>

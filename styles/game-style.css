@@ -4,6 +4,8 @@ input{
     display: none;
 }
 body{
+    background-image: url("../resources/img/background.jpeg");
+    background-size: cover;
 	width: 960px;
 	margin: 0 auto;
 }
@@ -22,10 +24,17 @@ img{
 
 #game-level{
     padding-top: 100px;
-    border: 1px dotted;
+    /* border: 1px solid green; */
     height: 600px;
-    background-color: black;
+    width: 900px;
+    /* background-color: white; */
+    
+   
     text-align: center;
+}
+#goback{
+    position: fixed;
+    bottom: 0;
 }
 .game-level-button {
     height: 300px;
@@ -44,7 +53,7 @@ img{
     width: 930px;
     height: 350px;
     
-    display: hidden;
+    display: hidden; 
 }
 
 #game{
@@ -56,20 +65,30 @@ img{
 #time{
     position: absolute;
     top: 0; left: 0;
-    width: 100px; height: 50px;
-    border-color: brown;
+    width: 200px; height: 70px;
+    line-height: 70px;
+    text-align: center;
+    border: 4px dotted brown;
+    border-radius: 10px;
+    font-size: 20px;
 }
 
 #life{
     position: absolute;
     top: 0; right: 0;
-    width: 100px; height: 50px;
-    border-color: brown;
+    width: 350px; height: 70px;
+    border: 4px dotted brown;
+    border-radius: 10px;
+}
+
+.l_img{
+    float: right;
+    margin: 10px;
 }
 
 #game-screen {
     position: absolute;
-    top: 150px; left: 0;
+    top: 170px; left: 0;
     border: 1px solid red;
     display: none;
 }
