@@ -28,5 +28,13 @@ var ballRadius = 10;
 var level;
 
 //
-var min;
-var second;
+var timer;
+var min = 5;
+var sec = 60;
+
+//
+var life_count;
+var lifeArray = ["life1.png","life2.jpeg"];
+
+//
+var slideArray = ["resources/img/block1.png" ];

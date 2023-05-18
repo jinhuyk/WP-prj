@@ -45,11 +45,10 @@ $(canvas).on("click",function(e){
     }
 })
 
-//var imgArray = ["resources/img/block1.png", ];
-//$("#slide-bar").on("click",function(){
-//   var img_num = Math.floor(Math.random()*imgArray.length+1);
-//    $(this).attr = ("src", imgArray[img_num]);
-//})
+$("#slide-image").on("click",function(){
+    var img_num = Math.floor(Math.random()*imgArray.length);
+    $(this).attr = ("src", imgArray[img_num]);
+})
 
 
 function draw(){
