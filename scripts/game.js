@@ -1,8 +1,8 @@
 $(function(){
     $("#game").hide();
-    $("#lv1").css({"background":"url(../resources/img/lv1.jpeg)"});
-    $("#lv2").css({"background":"url(../resources/img/lv2.jpeg)"});
-    $("#lv3").css({"background":"url(../resources/img/lv3.jpeg)"});
+    $("#lv1").css({"background":"url(./resources/img/lv1.jpeg)"});
+    $("#lv2").css({"background":"url(./resources/img/lv2.jpeg)"});
+    $("#lv3").css({"background":"url(./resources/img/lv3.jpeg)"});
     $(".game-level-button").css({"background-size": "cover"});
     $(".game-level-button").each(function(){
         $(this).click(function(){
@@ -71,6 +71,6 @@ function setLife(){
     }
 }
 
-$("#goback").click(function(){
+$("#go-back").click(function(){
     window.location.replace("main.html");
 })
