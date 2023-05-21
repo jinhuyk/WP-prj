@@ -4,28 +4,29 @@
 <head>
     <title>웹프로그래밍 7팀</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
-    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles/main-style.css">
 </head>
 <body>
     
     <div id="page-wrapper">
+        
         <header id="main-title"><img src="resources/img/logo.png" width="600px"></header>
 
         <div id="main-menu">
-            <img class="menu-button" id="game-start-btn" src="resources/img/start-btn.png">
-            <img id="game-description" class="menu-button" src="resources/img/guide-btn.png">
+            <div class="menu-button" id="game-start-btn">시작</div>
+            <div id="game-description" class="menu-button">가이드</div>
             <div id="game-description-content">
                 <input id="sec-one" type="radio" name="tab" checked="checked">
                 <input id="sec-two" type="radio" name="tab">
                 <input id="sec-three" type="radio" name="tab">
                 <input id="sec-four" type="radio" name="tab">
                 <section class="tab-title">
-                    <label for="sec-one">배경</label>
-                    <label for="sec-two">단계</label>
-                    <label for="sec-three">조작</label>
-                    <label for="sec-four">아이템</label>
-                    <label class="close_img">닫기</label>
+                    <label class="tab-btn" for="sec-one">배경</label>
+                    <label class="tab-btn" for="sec-two">단계</label>
+                    <label class="tab-btn" for="sec-three">조작</label>
+                    <label class="tab-btn" for="sec-four">아이템</label>
+                    <label class="tab-btn close_img">닫기</label>
                 </section>
                 <div class="content">
                     어느 평화로운 농장에는...<br><br>
@@ -66,27 +67,22 @@
                     faster - 공이 빨라짐<br>
                     slower - 공이 느려짐<br>
                     normal - 속성 초기화 (파괴 속성 동일)<br>
-                    관통 - 블럭 3개를 관통한다.<br><br>
-                
-                    
-                </div>
-            
-
-                    
+                    관통 - 블럭 3개를 관통한다.
+                </div>      
                     
             </div>
-            <img id="option" class="menu-button" src="resources/img/setting-btn.png">
+            <div id="option" class="menu-button">옵션</div>
             <div id="option-content">
                 <input id="sec2-one" type="radio" name="tab2" checked="checked">
                 <input id="sec2-two" type="radio" name="tab2">
                 <!-- <input id="sec2-three" type="radio" name="tab2">
                 <input id="se2c-four" type="radio" name="tab2"> -->
                 <section class="tab-title">
-                    <label for="sec2-one">소리</label>
-                    <label for="sec2-two">개발자</label>
+                    <label class="tab-btn" for="sec2-one">소  리</label>
+                    <label class="tab-btn" for="sec2-two">정  보</label>
                     <!-- <label for="sec2-three"></label>
                     <label for="sec2-four"></label> -->
-                    <label class="close_img">닫기</label>
+                    <label  class="tab-btn close_img">닫  기</label>
                 </section>
                 <div class="content">
                     <h2 id="volon">소리 켜기</h2> 
@@ -94,18 +90,21 @@
                     <br>      
                 </div>
                 <div class="content">
-                    <h3>
-                        202211381 조현서<br>
-                        202011323 안치수<br>
-                        202210748 문진혁<br>
-                    </h3>  
+                    Konkuk Univ. Computer Science & Engineering<br>
+                    Web Programming Team Project
+                    <br><br><hr><br>
+
+                    202211381 조현서<br>
+                    202011323 안치수<br>
+                    202210748 문진혁<br>
+                    
                 </div>
             </div>
         </div>
-
-
-        
     </div>
+    <footer>
+        <img src="resources/img/footer.png" height="20px">
+    </footer>
     <audio src="resources/aud/main.mp3" id="audio" autoplay ></audio>
     <script src="scripts/main.js"></script>
 </body>

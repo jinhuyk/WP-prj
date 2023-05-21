@@ -1,12 +1,15 @@
-*{margin: 0; padding: 0;}
+*{margin: 0; padding: 0;
+}
 
 input{
     display: none;
 }
 body{
-    background-image: url("../resources/img/background.jpeg");
+    font-family: 'Black And White Picture', sans-serif;
+    background-image: url("../resources/img/background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    background-color: black;
 	width: 960px;
 	margin: 0 auto;
 }
@@ -24,7 +27,7 @@ img{
 }
 
 #page-wrapper{
-    padding-top: 50px;
+    margin:200px auto;
     background-size: 960px 100%;
 }
 
@@ -33,7 +36,10 @@ header{
     line-height: 300px;
     text-align: center;
 }
-
+footer{
+    position: fixed;
+    bottom: 0;
+}
 #main-menu{
     height: 200px;
     padding: 50px;
@@ -43,12 +49,15 @@ header{
 .menu-button{
     height: 50px;
     margin: 15px auto;
-    padding: 5px; 
-    background-color: wheat;
     text-align: center;
     display: block;
-    font-size: 12px;
-    border-radius: 10px;
+    font-size: 40px;
+    color: rgb(177, 177, 177);
+    text-shadow: -2px 0px black, 0px 2px black, 2px 0px black, 0px -2px black;
+    cursor: pointer;
+}
+.menu-button:hover{
+    color:white
 }
 
 .menu-button div{
@@ -81,21 +90,7 @@ header{
     border-radius: 5px;
 }
 
-.close_img{
-    height: 30px;
-    line-height: 30px;
-    width: 30px;
-    text-align: center;
-    border: 3px solid;
-}
-.tab-title{
-    width: 100px;
-    margin-bottom: 10px;
-    display: block;
-    float: left;
-
-}
-.tab-title > label{
+.tab-btn{
     text-align: center;
     display: block;
     width: 90px;
@@ -104,13 +99,25 @@ header{
     border: 2px solid;
     margin: 20px;
     border-radius:5px;
-    
+}
+
+.tab-btn:hover{
+    color: white;
+    background-color: black;
+}
+
+.tab-title{
+    width: 100px;
+    margin-bottom: 10px;
+    display: block;
+    float: left;
+
 }
 .content {
-    overflow: scroll;
+    overflow: auto;
+    margin: 20px 10px;
     height: 250px;
     width: 450px;
-    margin-top: 30px;
     float: right;
     display: none;
 }
