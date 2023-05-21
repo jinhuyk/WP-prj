@@ -9,9 +9,11 @@ var brickHeight = 20;
 var brickPadding = 10;
 var brickOffsetTop = 30;
 var brickOffsetLeft = 30;
+var brickPro = 6;
 
 
 //block
+var blockRate =1;
 var blockHeight = 20;
 var blockWidth = 70; 
 var blockX, blockY;
@@ -33,8 +35,18 @@ var min = 5;
 var sec = 60;
 
 //
+var calc;
+var score = 0;
+var update_score = 0;
+
+//
 var life_count;
 var lifeArray = ["life1.png","life2.jpeg"];
 
 //
 var slideArray = ["resources/img/block1.png" ];
+
+// 
+var attack = 0;
+var manzu = 2;
+var hard = 3;
