@@ -107,7 +107,8 @@ footer{
 }
 
 .tab-title{
-    width: 100px;
+    height: 250px;
+    width: 130px;
     margin-bottom: 10px;
     display: block;
     float: left;

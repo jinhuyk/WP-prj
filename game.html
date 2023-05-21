@@ -4,43 +4,52 @@
 <head>
     <title>웹프로그래밍 7팀</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles/game-style.css">
 </head>
 <body>
-    <div id="game-level">
-        <h2><img src="resources/img/chooseTheLevel.png" width="600px"></h2>
-        <div class="select-level">
-           
-            <div class="game-level-button" id="lv1"><img src="resources/img/level1.png" width="150px"></div>
-            <div class="game-level-button" id="lv2"><img src="resources/img/level2.png" width="150px"></div>
-            <div class="game-level-button" id="lv3"><img src="resources/img/level3.png" width="150px"></div>
+    <div id="game-preview" class="popup-pre">
+        <div id="game-script"></div>
+        <div id="keep-btn", class="text-btn">계속</div>
+    </div>
+
+    <div id="game-scn">
+        <div id="game-level">
+            <h2><img src="resources/img/chooseTheLevel.png" width="600px"></h2>
+            <div class="select-level">
             
-            <div id="go-back"><img src="resources/img/BackToMain.png" width="300px"></div>
+                <div class="game-level-button" id="lv1"><img src="resources/img/level1.png" width="150px"></div>
+                <div class="game-level-button" id="lv2"><img src="resources/img/level2.png" width="150px"></div>
+                <div class="game-level-button" id="lv3"><img src="resources/img/level3.png" width="150px"></div>
+                
+                <div id="go-back"><img src="resources/img/BackToMain.png" width="300px"></div>
+            </div>
         </div>
 
+        <div id="game">
+            <div id="time">
+                
+            </div>
+            <div id ="life">
+                
+            </div>
+            <div id="game-screen">
+                <canvas id="myCanvas" width="960" height="500"></canvas>
+            </div>
+            <div id="slide-selectbar">
+                <img id="slide-image" src="resources/img/block1.png" width="100" height="100"/>
+            </div>
+        </div>
     </div>
-    <div id="game">
-        <div id="time">
-            
-        </div>
-        <div id ="life">
-            
-        </div>
-        <div id="game-screen">
-            <canvas id="myCanvas" width="480" height="320"></canvas>
-        </div>
-        <div id="slide-selectbar">
-            <img id="slide-image" src="resources/img/block1.png" width="100" height="100"/>
-        </div>
-    </div>
-    <div>
-    </div>
+    
+
+
 </body>
-<script src="scripts/game.js"></script>
-<script src="scripts/variable.js"></script>
-<script src="scripts/ball.js"></script>
-<script src="scripts/block.js"></script>
-<script src="scripts/brick.js"></script>
-<script src="scripts/draw.js"></script>
+    <script src="scripts/game.js"></script>
+    <script src="scripts/variable.js"></script>
+    <script src="scripts/ball.js"></script>
+    <script src="scripts/block.js"></script>
+    <script src="scripts/brick.js"></script>
+    <script src="scripts/draw.js"></script>
 </html>
 

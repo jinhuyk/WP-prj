@@ -1,5 +1,7 @@
 $(document).ready(function(){
-
+    $(window).resize(function(){
+		change_position($(".popup"))
+	})
 
     $("#game-description").click(function(){
         var content = "#game-description-content";

@@ -15,32 +15,33 @@
 
         <div id="main-menu">
             <div class="menu-button" id="game-start-btn">시작</div>
+            <div id="option" class="menu-button">옵션</div>
+            <div id="option-content">
+                <input id="sec2-one" type="radio" name="tab2" checked="checked">              
+                <section class="tab-title">
+                    <label class="tab-btn" for="sec2-one">소  리</label>
+                    <label  class="tab-btn close_img">닫  기</label>
+                </section>
+                <div class="content">
+                    <h2 id="volon">소리 켜기</h2> 
+                    <h2 id="voloff">소리 끄기</h2>
+                    <br>      
+                </div>
+                
+            </div>
             <div id="game-description" class="menu-button">가이드</div>
             <div id="game-description-content">
-                <input id="sec-one" type="radio" name="tab" checked="checked">
-                <input id="sec-two" type="radio" name="tab">
+                <input id="sec-two" type="radio" name="tab" checked="checked">
                 <input id="sec-three" type="radio" name="tab">
                 <input id="sec-four" type="radio" name="tab">
                 <section class="tab-title">
-                    <label class="tab-btn" for="sec-one">배경</label>
                     <label class="tab-btn" for="sec-two">단계</label>
                     <label class="tab-btn" for="sec-three">조작</label>
                     <label class="tab-btn" for="sec-four">아이템</label>
+                    <label class="tab-btn" for="sec-two">정  보</label>
                     <label class="tab-btn close_img">닫기</label>
                 </section>
-                <div class="content">
-                    어느 평화로운 농장에는...<br><br>
-                    젊은 공돌이 농부가 거위 건덕이, 고양이 만쥬, 그리고 황소 쿠(KU)를 데리고 살고 있었다.<br><br>
-                    찜통더위의 어느 여름 날..<br>
-                    건덕이와 만쥬, 쿠는 선풍기 하나 없이 허덕이고 있다.<br><br>
-                    그런데 옆 주인집을 보니, 혼자서 에어컨을 틀고 여유롭게 누워있는 농부를 발견한다!!!<br><br>
-                    이에 화가 난 동물들은...!<br><br>
-                    <strong>반란을 결심하고 성공한다.</strong>
-                    <br><br>
-                    쫓겨난 농부(플레이어)는 의기양양한 동물들을 보고서 좌절하지만,<br>
-                    다시 자신의 농장을 되찾기 위해 힘차게 길을 나선다...<br><br>
-                    To Be Continued...
-                </div>
+                
                 <div class="content">
                     1단계 : 건덕이(거위)<br>
                     2단계 : 만쥬(고양이)<br>
@@ -69,26 +70,6 @@
                     normal - 속성 초기화 (파괴 속성 동일)<br>
                     관통 - 블럭 3개를 관통한다.
                 </div>      
-                    
-            </div>
-            <div id="option" class="menu-button">옵션</div>
-            <div id="option-content">
-                <input id="sec2-one" type="radio" name="tab2" checked="checked">
-                <input id="sec2-two" type="radio" name="tab2">
-                <!-- <input id="sec2-three" type="radio" name="tab2">
-                <input id="se2c-four" type="radio" name="tab2"> -->
-                <section class="tab-title">
-                    <label class="tab-btn" for="sec2-one">소  리</label>
-                    <label class="tab-btn" for="sec2-two">정  보</label>
-                    <!-- <label for="sec2-three"></label>
-                    <label for="sec2-four"></label> -->
-                    <label  class="tab-btn close_img">닫  기</label>
-                </section>
-                <div class="content">
-                    <h2 id="volon">소리 켜기</h2> 
-                    <h2 id="voloff">소리 끄기</h2>
-                    <br>      
-                </div>
                 <div class="content">
                     Konkuk Univ. Computer Science & Engineering<br>
                     Web Programming Team Project
@@ -98,12 +79,12 @@
                     202011323 안치수<br>
                     202210748 문진혁<br>
                     
-                </div>
+                </div>            
             </div>
         </div>
     </div>
     <footer>
-        <img src="resources/img/footer.png" height="20px">
+        
     </footer>
     <audio src="resources/aud/main.mp3" id="audio" autoplay ></audio>
     <script src="scripts/main.js"></script>

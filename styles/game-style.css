@@ -4,8 +4,11 @@ input{
     display: none;
 }
 body{
-    background-image: url("../resources/img/background.jpeg");
+    font-family: 'Black And White Picture', sans-serif;
+    background-image: url("../resources/img/background.jpg");
     background-size: cover;
+    background-repeat: no-repeat;
+    background-color: black;
 	width: 960px;
 	margin: 0 auto;
 }
@@ -20,6 +23,47 @@ a{
 
 img{
 	border: 0;
+}
+
+.text-btn{
+    position: inherit ;
+    height: 50px;
+    margin: 15px auto;
+    text-align: center;
+    display: block;
+    font-size: 20px;
+    color: rgb(177, 177, 177);
+    text-shadow: -2px 0px black, 0px 2px black, 2px 0px black, 0px -2px black;
+    cursor: pointer;
+
+}
+.text-btn:hover{
+    color: white;
+}
+
+#game-scn{
+    display: none;
+}
+#game-preview{
+    display: none;
+    overflow: hidden;
+}
+#game-script{
+    margin-top: 30px;
+}
+.popup-pre{
+	position:fixed;
+	top:0;
+	left:0;
+	background-color: black;
+    text-align: center;
+    color: white;
+    padding: 10px 10px 10px 10px;
+	z-index: 1;
+	width: 1000px;
+    height: 500px;
+	border:2px solid black;
+    border-radius: 5px;
 }
 
 #game-level{
@@ -60,6 +104,7 @@ img{
     position: relative;
     height: 800px;
     border-color: black;
+    display: none;
 }
 
 #time{
@@ -89,13 +134,11 @@ img{
 #game-screen {
     position: absolute;
     top: 170px; left: 0;
-    border: 1px solid red;
-    display: none;
 }
 
 #myCanvas {
     margin: 0 auto;
-    border: 1px solid black;
+    background-color: green;
 }
 
 #slide-selectbar{
