@@ -1,3 +1,4 @@
+
 function drawBall(){
     ctx.beginPath();
     ctx.arc(x,y,ballRadius,0,Math.PI*2);
@@ -33,7 +34,13 @@ function drawBlock(bX,bY){
     ctx.fill();
     ctx.closePath();
 }
-
+function drawSampleBlock(bX,bY){
+    ctx.beginPath();
+    ctx.rect(bX, bY, blockWidth,blockHeight);
+    ctx.fillStyle = "red";
+    ctx.fill();
+    ctx.closePath();
+}
 $(canvas).on("click",function(e){
     if(blockUp === false){
         blockUp = true;
@@ -44,14 +51,21 @@ $(canvas).on("click",function(e){
         drawBlock(blockX,blockY);
     }
 })
+canvas.onmousemove = (function(e){
+    if(blockUp==false){
+        var l = $(this).offset().left;
+        var t = $(this).offset().top;
+        blockX = e.pageX - l;
+        blockY = e.pageY - t;
+        drawSampleBlock(blockX,blockY);
+    }
 
-$("#slide-image").on("click",function(){
-    var img_num = Math.floor(Math.random()*imgArray.length);
-    $(this).attr = ("src", imgArray[img_num]);
 })
 
 
 function draw(){
+
+   
     ctx.clearRect(0,0,canvas.width, canvas.height);
     drawBall();
     if(blockUp === true){
@@ -66,4 +80,3 @@ function draw(){
     y += dy;
 }
 
-setInterval(draw, 10);

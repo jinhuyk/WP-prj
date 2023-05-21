@@ -25,6 +25,20 @@ img{
 	border: 0;
 }
 
+.menu-button{
+    height: 50px;
+    margin: 15px auto;
+    text-align: center;
+    display: block;
+    font-size: 40px;
+    color: rgb(177, 177, 177);
+    text-shadow: -2px 0px black, 0px 2px black, 2px 0px black, 0px -2px black;
+    cursor: pointer;
+}
+.menu-button:hover{
+    color:white
+}
+
 .text-btn{
     position: inherit ;
     height: 50px;
@@ -41,8 +55,13 @@ img{
     color: white;
 }
 
+#game-guide{
+    display: none;
+}
+
 #game-scn{
     display: none;
+
 }
 #game-preview{
     display: none;
@@ -66,6 +85,19 @@ img{
     border-radius: 5px;
 }
 
+.popup{
+    position:fixed;
+	top:0;
+	left:0;
+    text-align: center;
+    width: 500px;
+    height: 500px;
+	z-index: 1;
+}
+
+#gameState{
+    display: none;
+}
 #game-level{
     padding-top: 100px;
     /* border: 1px solid green; */
@@ -107,14 +139,36 @@ img{
     display: none;
 }
 
+#game-home{
+    position: absolute;
+    top: 0; left:0;
+    margin: 10px 0;
+    width: 50px; height: 50px;
+    border : 2px solid white;
+    border-radius: 10px;
+}
+
 #time{
     position: absolute;
-    top: 0; left: 0;
-    width: 200px; height: 70px;
-    line-height: 70px;
+    top: 0; left: 60px;
+    margin: 10px 0;
+    width: 200px; height: 50px;
+    line-height: 50px;
     text-align: center;
-    border: 4px dotted brown;
+    border : 2px solid white;
     border-radius: 10px;
+    font-size: 20px;
+}
+
+#score{
+    position:absolute;
+    top: 0; left: 270px;
+    margin: 10px 0;
+    width: 200px; height: 50px;
+    line-height: 50px;
+    text-align:center;
+    border: 2px solid white;
+    border-radius:10px;
     font-size: 20px;
 }
 
@@ -122,7 +176,7 @@ img{
     position: absolute;
     top: 0; right: 0;
     width: 350px; height: 70px;
-    border: 4px dotted brown;
+    border : 2px solid white;
     border-radius: 10px;
 }
 
@@ -138,7 +192,9 @@ img{
 
 #myCanvas {
     margin: 0 auto;
-    background-color: green;
+    background-color:white;
+    
+    background-size: 100% 100%;
 }
 
 #slide-selectbar{
@@ -150,4 +206,105 @@ img{
 .side-selectbar img{
     margin: 0 auto;
 	border:5px solid red;
+}
+
+#item-bar{
+    overflow: hidden;
+}
+
+.item{
+    text-align: center;
+    overflow: hidden;
+    float: left;
+    width: 650px;
+    height:180px;
+    border: 5px solid blue;
+    border-radius: 10px;
+    margin: 10px 25px;
+    background-color: white;
+    line-height: 200px;
+}
+
+.next{
+    text-align: center;
+    overflow: hidden;
+    float: left;
+    width: 180px;
+    height:180px;
+    margin: 10px 25px;
+}
+
+.next-item{
+    
+    width: 130px;
+    height: 130px;
+    border: 3px solid blue;
+    padding:3px;
+    margin: 0 auto;
+    background-color: white;
+    line-height: 130px;
+}
+
+
+#game-title-section{
+    display: block;
+    width: 300px;
+    margin: 30px;
+}
+#game-guide{
+    display: none;
+}
+
+.tab-btn{
+    text-align: center;
+    display: block;
+    width: 90px;
+    height: 30px;
+    line-height: 30px;
+    border: 2px solid;
+    margin: 20px;
+    border-radius:5px;
+}
+
+.tab-btn:hover{
+    color: black;
+    background-color: white;
+}
+
+#game-description-content{
+    margin: 0 50px
+}
+
+.tab-title{
+    height: 250px;
+    width: 130px;
+    margin-bottom: 10px;
+    display: block;
+    float: left;
+
+}
+
+#profile{
+    width: 250px;
+}
+
+.content {
+    overflow: auto;
+    margin: 20px 10px;
+    height: 250px;
+    width: 450px;
+    float: left;
+    display: none;
+}
+input:nth-of-type(1):checked ~ div:nth-of-type(1) {
+	display: block;
+}
+input:nth-of-type(2):checked ~ div:nth-of-type(2) {
+	display: block;
+}
+input:nth-of-type(3):checked ~ div:nth-of-type(3) {
+	display: block;
+}
+input:nth-of-type(4):checked ~ div:nth-of-type(4) {
+	display: block;
 }

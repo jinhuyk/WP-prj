@@ -13,8 +13,44 @@
         <div id="keep-btn", class="text-btn">계속</div>
     </div>
 
+    <div id="game-guide" class="popup-pre">
+        <img id="game-title-section" src="">
+        <div id="game-description-content">
+            
+            <input id="sec-two" type="radio" name="tab" checked="checked">
+            <input id="sec-three" type="radio" name="tab">
+            <input id="sec-four" type="radio" name="tab">
+            <section class="tab-title">
+                <label class="tab-btn" for="sec-two">설   명</label>
+                <label class="tab-btn" for="sec-three">조   작</label>
+                <label class="tab-btn" for="sec-four">아이템</label>
+                <label class="tab-btn close_img">시작하기</label>
+            </section>
+
+            <div id="lv-guide" class="content"></div>
+
+            <div class="content">
+                도형을 클릭 후, 원하는 위치에 클릭하세요! 
+                <br>
+                공이 바닥에 떨어지면.. 큰일납니다!
+            </div>
+            
+            <div class="content">
+                x2 - 공이 두배가됨<br>
+                Large - 공이 커짐<br>
+                small - 공이 작아짐<br>
+                faster - 공이 빨라짐<br>
+                slower - 공이 느려짐<br>
+                normal - 속성 초기화 (파괴 속성 동일)<br>
+                관통 - 블럭 3개를 관통한다.
+            </div> 
+            <img id="profile" src="">
+        </div>
+    </div>
+
     <div id="game-scn">
         <div id="game-level">
+             
             <h2><img src="resources/img/chooseTheLevel.png" width="600px"></h2>
             <div class="select-level">
             
@@ -22,22 +58,33 @@
                 <div class="game-level-button" id="lv2"><img src="resources/img/level2.png" width="150px"></div>
                 <div class="game-level-button" id="lv3"><img src="resources/img/level3.png" width="150px"></div>
                 
-                <div id="go-back"><img src="resources/img/BackToMain.png" width="300px"></div>
+                <div class="menu-button" id="go-back">뒤로</div>
             </div>
         </div>
-
+        <div id="gameState" class="popup"><img src="" width="700"></div>
         <div id="game">
+            <div id ="game-home">
+                
+            </div>
             <div id="time">
                 
+            </div>
+            <div id="score">
+	
             </div>
             <div id ="life">
                 
             </div>
             <div id="game-screen">
                 <canvas id="myCanvas" width="960" height="500"></canvas>
-            </div>
-            <div id="slide-selectbar">
-                <img id="slide-image" src="resources/img/block1.png" width="100" height="100"/>
+                <div id="item-bar">
+                    <div class="item"><img src="/resources/img/block1.png" width="150px" height="50px"></div>
+                    <div class="next">
+                        <img src="/resources/img/next.png" width="80px">
+                        <div class="next-item"><img  src="/resources/img/block1.png" height="20px"></div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
