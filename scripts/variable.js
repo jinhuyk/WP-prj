@@ -2,15 +2,15 @@ var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 
 //brick
-var brickRowCount = 3;
-var brickColumnCount = 5;
+var brickColumnCount = 0;
+var brickRowCount = 0;
 var brickWidth = 75;
-var brickHeight = 20;
+var brickHeight = 40;
 var brickPadding = 10;
 var brickOffsetTop = 30;
 var brickOffsetLeft = 30;
 var brickPro = 6;
-
+var bricks = [];
 
 //block
 var blockRate =1;
@@ -41,12 +41,20 @@ var update_score = 0;
 
 //
 var life_count;
-var lifeArray = ["life1.png","life2.jpeg"];
+var damage_count;
 
-//
-var slideArray = ["resources/img/block1.png" ];
 
 // 
 var attack = 0;
 var manzu = 2;
-var hard = 3;
+var ku_skill = 3;
+
+var timeScript;
+
+var blockSize = [150,100,50, 25];
+var blockShuffleTimer;
+
+var gameTimer;
+
+//게임 클리어 확인 변수
+var clear;

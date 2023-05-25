@@ -1,10 +1,13 @@
-var bricks = [];
-for(var c=0; c<brickColumnCount; c++) {
-    bricks[c] = [];
-    for(var r=0; r<brickRowCount; r++) {
-        bricks[c][r] = { x: 0, y: 0 , v : 1 , e : 0};
+
+function brickInit(){
+    for(var c=0; c<brickColumnCount; c++) {
+        bricks[c] = [];
+        for(var r=0; r<brickRowCount; r++) {
+            bricks[c][r] = { x: 0, y: 0 , v : 1 , e : 0};
+        }
     }
 }
+
 
 
 function collisionBricks() {
@@ -20,15 +23,15 @@ function collisionBricks() {
                         dx*=-1;
                         b.v = 0;
                         score += update_score;  //공으로 블럭을 맞추면 스코어 획득
-                        //playPro(p);
-                        //attack(p);
+                        //playPro(b);
+                        //attack(b);
                     }
                     if(x+dx+ballRadius > b.x && x+dx-ballRadius < b.x+brickWidth){
                         dy *=-1;
                         b.v=0;
                         score += update_score;
-                        //playPro(p);
-                        //attack(p);
+                        //playPro(b);
+                        //attack(b);
                     }
                 }
             }
@@ -77,29 +80,39 @@ function playPro(p){
             if(manzu != 0){
                 manzu--;
                 life_count--;
+                resetLife();
             }
         }
         else if(p.e == 3){
-            hard--;
+            ku_skill--;
             p.v = 1;
-            if(hard == 0) p.v = 0;
+            if(ku_skill == 0) p.v = 0;
         }
 
         //score += Math.floor(Math.random()*10+10);   //추가 점수 획득
     }
 }
 
-function attack(p){
-    if(attack == 1){
-        ctx.beginPath();
-        ctx.moveTo(p.x,p.y);
-        ctx.arc(p.x,p.y,10,0,Math.PI*2);
-        ctx.fillStyle = "#0095DD";
-        ctx.fill();
-        ctx.closePath();
-        p.y += -1;
-    }
-}
+// var p = [];
+// var p_attack = 0;
+// for(var pi=0;pi<brickPro;pi++)
+//     p[pi] = { x : 0 , y : 0};
+
+// function attack(b){
+//     var p = p[p_attack];
+//     if(attack == 0){
+//         p.x = b.x; p.y = b.y;
+//     }
+//     else{
+//         ctx.beginPath();
+//         ctx.moveTo(p.x,p.y);
+//         ctx.arc(p.x,p.y,10,0,Math.PI*2);
+//         ctx.fillStyle = "#0095DD";
+//         ctx.fill();
+//         ctx.closePath();
+//         p.y += -1;
+//     }
+// }
 
 
 

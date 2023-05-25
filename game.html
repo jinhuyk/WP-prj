@@ -10,9 +10,14 @@
 <body>
     <div id="game-preview" class="popup-pre">
         <div id="game-script"></div>
-        <div id="keep-btn", class="text-btn">계속</div>
+        <div id="keep-btn", class="text-btn">스킵하기</div>
     </div>
-
+    <div id="game-overview" class="popup-pre">
+        <div id="game-result">
+            <img src="">
+        </div>
+        <div id="end-btn", class="text-btn">종료</div>
+    </div>
     <div id="game-guide" class="popup-pre">
         <img id="game-title-section" src="">
         <div id="game-description-content">
@@ -42,7 +47,6 @@
                 faster - 공이 빨라짐<br>
                 slower - 공이 느려짐<br>
                 normal - 속성 초기화 (파괴 속성 동일)<br>
-                관통 - 블럭 3개를 관통한다.
             </div> 
             <img id="profile" src="">
         </div>
@@ -61,10 +65,9 @@
                 <div class="menu-button" id="go-back">뒤로</div>
             </div>
         </div>
-        <div id="gameState" class="popup"><img src="" width="700"></div>
         <div id="game">
             <div id ="game-home">
-                
+                <!--<div id = "game-home-content" class = "popup-pre"></div>-->
             </div>
             <div id="time">
                 
@@ -78,16 +81,17 @@
             <div id="game-screen">
                 <canvas id="myCanvas" width="960" height="500"></canvas>
                 <div id="item-bar">
-                    <div class="item"><img src="/resources/img/block1.png" width="150px" height="50px"></div>
+                    <div class="item"><img src="/resources/img/block.png" width="150px" height="50px"></div>
                     <div class="next">
                         <img src="/resources/img/next.png" width="80px">
-                        <div class="next-item"><img  src="/resources/img/block1.png" height="20px"></div>
+                        <div class="next-item"><img  src="/resources/img/block.png" height="20px"></div>
                     </div>
                 </div>
 
             </div>
         </div>
     </div>
+    
     
 
 

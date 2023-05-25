@@ -1,4 +1,4 @@
-var timeScript;
+
 
 $(function(){
 
@@ -9,14 +9,12 @@ $(function(){
     change_position($(".popup-pre"));
     showScript();
 
-    
 
     $("#keep-btn").click(function(){
         clearInterval(timeScript);
         $("#game-preview").fadeOut();
         $("#game-scn").show();
     });
-
     $("#lv1").css({"background":"url(./resources/img/lv1.jpeg)"});
     $("#lv2").css({"background":"url(./resources/img/lv2.jpeg)"});
     $("#lv3").css({"background":"url(./resources/img/lv3.jpeg)"});
@@ -27,11 +25,10 @@ $(function(){
             change_position($(".popup-pre"));
             $("#game-guide").show();
             if($(this).attr("id") == "lv1"){
-                
                 $("#game-title-section").attr("src","./resources/img/level1.png");
                 $("#profile").attr("src","./resources/img/wantedlv1.jpg");
                 $("#lv-guide").append(scriptlv1);
-                $("#myCanvas").css({"background-image":"url(/resources/img/DevilCat.png)"});
+                
 
                 $(".close_img").click(function(){
                     $("#game-guide").hide();
@@ -40,91 +37,103 @@ $(function(){
                     timer = setInterval(setTime, 1000);
                     update_score = 1;
                     life_count = 5;
+                    damage_count = 0;
+                    //p_attack = 0;
+                    brickColumnCount= 12;
+                    brickRowCount = 3;
                     setLife();
+                    brickInit();
                     startGame();
-                    
-                    
-                   
+
                 });
                 
-              
-
-              
             }
             if($(this).attr("id") == "lv2"){
-
+                
+                $("#game-title-section").attr("src","./resources/img/level2.png");
+                $("#profile").attr("src","./resources/img/wantedlv2.jpg");
                 $("#lv-guide").append(scriptlv2);
-                $("#myCanvas").css({"background-image":"url(/resources/img/DevilCat.png)"});
+                
 
                 $(".close_img").click(function(){
                     $("#game-guide").hide();
-                    level= 2;
-                    min= 4; sec= 30;
+                    level= 1;
+                    min= 5; sec= 30;
                     timer = setInterval(setTime, 1000);
-                    update_score = 2;
-                    life_count = 4;
+                    update_score = 1;
+                    life_count = 5;
+                    damage_count = 0;
+                    //p_attack = 0;
+                    brickColumnCount= 12;
+                    brickRowCount = 3;
                     setLife();
-                    
-                });
+                    brickInit();
+                    startGame();
 
-                
+                });
             }
             if($(this).attr("id") == "lv3"){
-
+                
+                $("#game-title-section").attr("src","./resources/img/level3.png");
+                $("#profile").attr("src","./resources/img/wantedlv3.png");
                 $("#lv-guide").append(scriptlv3);
-                $("#myCanvas").css({"background-image":"url(/resources/img/Cow2.png)"});
+                
 
                 $(".close_img").click(function(){
                     $("#game-guide").hide();
-                });
-                
+                    level= 1;
+                    min= 5; sec= 30;
+                    timer = setInterval(setTime, 1000);
+                    update_score = 1;
+                    life_count = 5;
+                    damage_count = 0;
+                    //p_attack = 0;
+                    brickColumnCount= 12;
+                    brickRowCount = 3;
+                    setLife();
+                    brickInit();
+                    startGame();
 
-                level= 3;
-                min= 3; sec= 30;
-                timer = setInterval(setTime, 1000);
-                update_score = 3;
-                life_count = 3;
-                setLife();
+                });
             }
             $("#game-level").hide();
         })
     })
+    /*
+    $("#game-home").click(function(){
+        $("#game-home-content")
+    })
+    */
     $("#go-back").click(function(){
         window.location.replace("main.html");
     })
-    // var interval = 1000;
-    // var timer;
-    // var container = $('.slide-selectbar');
-    // function switchImg(){
-    //     var imgs = container.find('img');
-    //     var first = imgs.eq(0);
-    //     var second = imgs.eq(Math.random() * (2 - 1) + 1);
-    //     first.appendTo(container).hide();
-    //     second.show();
-    // }
-    // timer = setInterval(switchImg,interval);
 
+    $(window).resize(function(){
+        change_position($(".popup-pre"))
+    })
     
+
+    $("#end-btn").click(function(){
+        $("#game-overview").fadeOut();
+        window.location.replace("main.html");
+    });
+
 })
 
 function startGame(){
-    $("#gameState").find("img").attr("src","./resources/img/gameStartlogo.png");
-    change_position($(".popup"))
-    $("#gameState").show();
     setTimeout(function(){
-        $("#gameState").hide();
-        setInterval(draw, 10);
+        calc = setInterval(setScore,10);  
+        $("#game").show();
+        
+        shuffleItem();
+        gameTimer = setInterval(draw, 10);
     },2000);
 
-    calc = setInterval(setScore,10);    //score 출력
-    //brickPro();                           //블럭 속성 추가(bricks.js)
+
     
-    $("#game").show();
-    shuffleItem();
 }
 
-var blockSize = [150,100,50, 25];
-var blockShuffleTimer;
+
 function shuffleItem(){
     function shuffleItemHandler(){
 
@@ -144,6 +153,7 @@ function shuffleItem(){
 function setTime(){
     if(sec == 0 && min == 0){
         clearInterval(timer);
+        clear = false;
     }
     sec--;
     if(sec == 0){
@@ -165,11 +175,17 @@ function setLife(){
         $(create_img).attr("class","l_img");
         $(create_img).attr("src", "resources/img/life2.png");
         $(create_img).width("50px").height("50px");
-        $("#life").append(create_img);
+        $("#life").prepend(create_img);
     }
 }
 
-
+function resetLife(){   
+    damage_count++;
+    for(var i=0;i<damage_count;i++){
+        var imgs = $("#life img").eq(i); 
+        imgs.attr("src", "resources/img/life1.png");
+    }
+}
 
 function change_position(obj){
 	var l=($(window).width()-obj.width())/2;
@@ -177,12 +193,13 @@ function change_position(obj){
 	obj.css({top:t,left:l});
 }
 
+
 function showScript(){
     var page = 0;
     timeScript = setInterval(function(){
         if(page == script.length-1){
             clearInterval(timeScript);
-            $("#keep-btn").show();
+            $("#keep-btn").text("계속하기");
         }
         document.getElementById("game-script").innerHTML += script[page];
         page++;
@@ -193,6 +210,44 @@ function showScript(){
 }
 
 var itemSize = [150,100,50,25];
+
+function gameOver(){
+    bricksCheck();
+    if(life_count == 0 || (min == 0 && sec == 0)){
+        clear = false;
+    }
+    clearInterval(gameTimer);
+    $("#game").hide();
+    $("#game-overview").fadeIn();
+    showResult();
+    
+}
+
+function bricksCheck(){
+    for(var c=0; c<brickColumnCount; c++) {
+        for(var r=0; r<brickRowCount; r++) {
+            if(bricks[c][r].v == 0) clear = true; 
+        }
+    }
+    for(var c=0; c<brickColumnCount; c++) {
+        for(var r=0; r<brickRowCount; r++) {
+            if(bricks[c][r].v == 1) clear = false; 
+        }
+    }
+}
+
+function showResult(){
+    if(clear==true)
+    {
+        var img = $("#game-result").find("img");
+        img.attr("src","/resources/img/win.png");
+    }
+    else
+    {
+        var img = $("#game-result").find("img");
+        img.attr("src","/resources/img/lose.png");
+    }
+}
 var script = [
     "어느 평화로운 농장에는...<br><br>",
     "젊은 공돌이 농부가 거위 건덕이, 고양이 만쥬, 그리고 황소 쿠(KU)를 데리고 살고 있었다.<br><br>",
@@ -205,14 +260,15 @@ var script = [
     "다시 자신의 농장을 되찾기 위해 힘차게 길을 나선다...<br><br>"
 ]
 
+
 var scriptlv1 = 
-    "1단계 : 건덕이(거위)<br>* 각 단계는 총 2라운드로 구성되어 있으며 첫번째 라운드는 일반 라운드, 두번째 라운드는 보스 라운드로 게임이 진행됩니다.<br>* 일반 라운드와 다르게 보스 라운드에는 건덕이의 특별 능력이 포함된 블록들이 임의로 생성됩니디.<br><br>건덕이의 특별 능력이 부여된 블록과 충돌하면 새똥을 떨어트려 특정 위치에는 슬라이드를 배치할 수 없게 만듭니다. <br>";
+    "1단계 : 건덕이(거위)<br> <br>* 건덕이의 특별 능력이 부여된 블록과 충돌하면 새똥을 떨어트려 특정 위치에는 슬라이드를 배치할 수 없게 만듭니다. <br>";
 
 var scriptlv2 =
-    "2단계 : 만쥬(고양이)<br>* 각 단계는 총 2라운드로 구성되어 있으며 첫번째 라운드는 일반 라운드, 두번째 라운드는 보스 라운드로 게임이 진행됩니다.<br>* 일반 라운드와 다르게 보스 라운드에는 만쥬의 특별 능력이 포함된 블록들이 임의로 생성됩니디.<br><br> 만쥬의 특별 능력이 부여된 블록과 충돌하면 플레이어의 라이프를 하나 잃게 됩니다. <br>";
+    "2단계 : 만쥬(고양이)<br> <br>* 만쥬의 특별 능력이 부여된 블록과 충돌하면 플레이어의 라이프를 하나 잃게 됩니다. <br>";
     
 var scriptlv3 =
-    "3단계 : 쿠(황소) <br>* 각 단계는 총 2라운드로 구성되어 있으며 첫번째 라운드는 일반 라운드, 두번째 라운드는 보스 라운드로 게임이 진행됩니다.<br>* 일반 라운드와 다르게 보스 라운드에는 건덕이의 특별 능력이 포함된 블록들이 임의로 생성됩니디.<br><br> 쿠의 특별 능력이 부여된 블록은 다른 일반 블록들과 다르게 매우 튼튼하여 3회를 충돌시켜야 블록을 제거할 수 있습니다.<br>";
+    "3단계 : 쿠(황소)<br> <br>* 쿠의 특별 능력이 부여된 블록은 다른 일반 블록들과 다르게 매우 튼튼하여 3회를 충돌시켜야 블록을 제거할 수 있습니다.<br>";
                     
     
     

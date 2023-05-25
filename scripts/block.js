@@ -4,9 +4,9 @@ function collisionBlocks() {
         if(y+dy+ballRadius >= blockY && y+dy -ballRadius <= blockY+blockHeight){
             if(x+dx+ballRadius == blockX || x+dx-ballRadius == blockX+blockWidth){
                 if(y+dy+ballRadius == blockY && y+dy-ballRadius == blockY+blockHeight){
-                    dy*=-1;
+                    dx*=-1;
                 }
-                dx*=-1;
+                dy*=-1;
                 //blockPro();
                 blockUp = false;
             }

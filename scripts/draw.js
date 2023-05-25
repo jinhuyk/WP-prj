@@ -16,8 +16,10 @@ function drawBricks() {
                 var brickY = (r*(brickHeight+brickPadding))+brickOffsetTop;
                 bricks[c][r].x = brickX;
                 bricks[c][r].y = brickY;
+                var img = new Image();
+                img.src = '/resources/img/block.png';
                 ctx.beginPath();
-                ctx.rect(brickX, brickY, brickWidth, brickHeight);
+                ctx.drawImage(img, brickX, brickY, brickWidth, brickHeight);
                 ctx.fillStyle = "#0095DD";
                 ctx.fill();
                 ctx.closePath();
