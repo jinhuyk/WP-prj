@@ -27,13 +27,11 @@ img{
 }
 
 #page-wrapper{
-    margin:200px auto;
+    margin:120px auto;
     background-size: 960px 100%;
 }
 
 header{
-    height: 300px;
-    line-height: 300px;
     text-align: center;
 }
 footer{
@@ -114,6 +112,7 @@ footer{
     float: left;
 
 }
+
 .content {
     overflow: auto;
     margin: 20px 10px;
@@ -122,6 +121,7 @@ footer{
     float: right;
     display: none;
 }
+
 input:nth-of-type(1):checked ~ div:nth-of-type(1) {
 	display: block;
 }

@@ -56,6 +56,11 @@ $(document).ready(function(){
     $("#game-start-btn").click(function(){
         window.location.replace("game.html");
     })
+    $("#hardOn").click(function(){
+        var r = new Audio("/resources/aud/rrtong.mp3");
+        r.play();
+        hard = true;
+    })
 })
 
 function change_position(obj){

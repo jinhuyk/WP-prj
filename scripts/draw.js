@@ -1,28 +1,28 @@
 
 function drawBall(){
     ctx.beginPath();
-    ctx.arc(x,y,ballRadius,0,Math.PI*2);
-    ctx.fillStyle = "#0095DD";
-    ctx.fill();
+    ctx.drawImage(stone, x, y, ballRadius*2, ballRadius*2);
     ctx.closePath();
 
 }
 
 function drawBricks() {
+    
+    
     for(var c=0; c<brickColumnCount; c++) {
         for(var r=0; r<brickRowCount; r++) {
             if(bricks[c][r].v == 1){
                 var brickX = (c*(brickWidth+brickPadding))+brickOffsetLeft;
                 var brickY = (r*(brickHeight+brickPadding))+brickOffsetTop;
+                
                 bricks[c][r].x = brickX;
                 bricks[c][r].y = brickY;
-                var img = new Image();
-                img.src = '/resources/img/block.png';
+
                 ctx.beginPath();
+                
                 ctx.drawImage(img, brickX, brickY, brickWidth, brickHeight);
-                ctx.fillStyle = "#0095DD";
-                ctx.fill();
                 ctx.closePath();
+                
             }
             
         }
@@ -31,26 +31,26 @@ function drawBricks() {
 
 function drawBlock(bX,bY){
     ctx.beginPath();
-    ctx.rect(bX, bY, blockWidth,blockHeight);
-    ctx.fillStyle = "#0099DD";
-    ctx.fill();
+    ctx.drawImage(brickImg, bX, bY, blockWidth, blockHeight);
     ctx.closePath();
 }
 function drawSampleBlock(bX,bY){
     ctx.beginPath();
-    ctx.rect(bX, bY, blockWidth,blockHeight);
-    ctx.fillStyle = "red";
-    ctx.fill();
+    ctx.drawImage(brickImg, bX, bY, blockWidth, blockHeight);
     ctx.closePath();
 }
 $(canvas).on("click",function(e){
     if(blockUp === false){
-        blockUp = true;
+        
         var l = $(this).offset().left;
         var t = $(this).offset().top;
         blockX = e.pageX - l;
         blockY = e.pageY - t;
-        drawBlock(blockX,blockY);
+        if(blockY >= canvas.height/2){
+            blockUp = true;
+            drawBlock(blockX,blockY);
+        }
+
     }
 })
 canvas.onmousemove = (function(e){
@@ -59,7 +59,8 @@ canvas.onmousemove = (function(e){
         var t = $(this).offset().top;
         blockX = e.pageX - l;
         blockY = e.pageY - t;
-        drawSampleBlock(blockX,blockY);
+        if(blockY >= canvas.height/2)
+            drawSampleBlock(blockX,blockY);
     }
 
 })
@@ -80,5 +81,6 @@ function draw(){
     collisionBlocks();
     x += dx;
     y += dy;
+    gameOver();
 }
 

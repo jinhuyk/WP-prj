@@ -23,6 +23,8 @@ function collisionBricks() {
                         dx*=-1;
                         b.v = 0;
                         score += update_score;  //공으로 블럭을 맞추면 스코어 획득
+                        bricksCheck();
+                        ef.play();
                         //playPro(b);
                         //attack(b);
                     }
@@ -30,6 +32,8 @@ function collisionBricks() {
                         dy *=-1;
                         b.v=0;
                         score += update_score;
+                        bricksCheck();
+                        ef.play();
                         //playPro(b);
                         //attack(b);
                     }

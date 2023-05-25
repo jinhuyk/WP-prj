@@ -5,8 +5,6 @@ input{
 }
 body{
     font-family: 'Black And White Picture', sans-serif;
-    background-image: url("../resources/img/lv1background.jpeg");
-    background-size: cover;
     background-color: black;
 	width: 960px;
 	margin: 0 auto;
@@ -35,11 +33,13 @@ img{
     cursor: pointer;
 }
 .menu-button:hover{
-    color:white
+    color:white;
 }
 
+.game-level-button:hover{
+    cursor: pointer;
+}
 .text-btn{
-    position: inherit ;
     height: 50px;
     margin: 15px auto;
     text-align: center;
@@ -56,6 +56,7 @@ img{
 
 #game-guide{
     display: none;
+    background-color: black;
 }
 
 #game-scn{
@@ -65,6 +66,7 @@ img{
 #game-preview{
     display: none;
     overflow: hidden;
+    background-color: black;
 }
 #game-script{
     margin-top: 30px;
@@ -73,14 +75,13 @@ img{
 	position:fixed;
 	top:0;
 	left:0;
-	background-color: black;
+
     text-align: center;
     color: white;
     padding: 10px 10px 10px 10px;
 	z-index: 1;
 	width: 1000px;
     height: 500px;
-	border:2px solid black;
     border-radius: 5px;
 }
 
@@ -200,8 +201,7 @@ img{
 
 #myCanvas {
     margin: 0 auto;
-    background-color: black;
-    background-size: 100% 100%;
+    background-size: cover;
     border: 2px solid white;
     border-radius: 10px;
 }
@@ -270,11 +270,12 @@ img{
 .tab-btn{
     text-align: center;
     display: block;
-    width: 90px;
-    height: 30px;
-    line-height: 30px;
+    width: 140px;
+    height: 60px;
+    font-size: large;
+    line-height: 60px;
     border: 2px solid;
-    margin: 20px;
+    margin: 20px auto;
     border-radius:5px;
 }
 
@@ -300,42 +301,59 @@ img{
     width: 250px;
 }
 
-.content {
-    overflow: auto;
-    margin: 20px 10px;
-    height: 250px;
-    width: 450px;
-    float: left;
-    display: none;
+.content{
+    font-size: 50px;
 }
-input:nth-of-type(1):checked ~ div:nth-of-type(1) {
-	display: block;
-}
-input:nth-of-type(2):checked ~ div:nth-of-type(2) {
-	display: block;
-}
-input:nth-of-type(3):checked ~ div:nth-of-type(3) {
-	display: block;
-}
-input:nth-of-type(4):checked ~ div:nth-of-type(4) {
-	display: block;
-}
+
 
 #game-overview{
     display: none;
 }
 
-#end-btn{
-    position: absolute;
-    bottom:10;
-    right: 10;
-    height: 50px;
-    margin: 15px auto;
-    text-align: center;
-    display: block;
-    font-size: 20px;
+#game-overview div{
+    display: none;
+    margin: 10px 0;
     color: rgb(177, 177, 177);
     text-shadow: -2px 0px black, 0px 2px black, 2px 0px black, 0px -2px black;
-    cursor: pointer;
-
 }
+
+#game-overview div h2{
+    margin: 10px 0;
+}
+
+#score-result{
+    font-size: 20px;
+}
+
+#game-result-lose h2:nth-of-type(1):hover{
+    color: white;
+    cursor: pointer;
+}
+
+#game-result-lose h2:nth-of-type(2):hover{
+    color: white;
+    cursor: pointer;
+}
+
+#game-result-12 h2:nth-of-type(1):hover{
+    color: white;
+    cursor: pointer;
+}
+
+#game-result-12 h2:nth-of-type(2):hover{
+    color: white;
+    cursor: pointer;
+}
+
+#game-result-3:hover{
+    color: white;
+    cursor: pointer;
+}
+
+#game-startview{
+    display: none;
+}
+.imgBox{
+    line-height: 500px;
+}
+

@@ -6,12 +6,11 @@ function ballPosCheck(){
         blockUp = false;
         life_count--;
         resetLife(); //(game.js)
-        if(life_count == 0) gameOver();
         x = canvas.width/2;
         y = canvas.height-30;
         dx = 2;
         dy = -2;
-        drawBall();
+        wa.play();
     }
     if(x+dx < ballRadius || x+dx > canvas.width-ballRadius) dx = -dx;
 

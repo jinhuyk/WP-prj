@@ -12,43 +12,26 @@
         <div id="game-script"></div>
         <div id="keep-btn", class="text-btn">스킵하기</div>
     </div>
+    <div id="game-startview" class="popup-pre">
+        <div class="imgBox">
+            <img src="/resources/img/gameStartlogo.png" width="600px">
+        </div>
+            
+    </div>
     <div id="game-overview" class="popup-pre">
         <div id="game-result">
             <img src="">
         </div>
-        <div id="end-btn", class="text-btn">종료</div>
+        <div id="score-result"></div>
+        <div id="game-result-lose"><h2>다시 하기</h2><h2>메인으로</h2></div>
+        <div id="game-result-12"><h2>다음 레벨</h2><h2>메인으로</h2></div>
+        <div id="game-result-3">메인으로</div>
     </div>
     <div id="game-guide" class="popup-pre">
-        <img id="game-title-section" src="">
         <div id="game-description-content">
-            
-            <input id="sec-two" type="radio" name="tab" checked="checked">
-            <input id="sec-three" type="radio" name="tab">
-            <input id="sec-four" type="radio" name="tab">
-            <section class="tab-title">
-                <label class="tab-btn" for="sec-two">설   명</label>
-                <label class="tab-btn" for="sec-three">조   작</label>
-                <label class="tab-btn" for="sec-four">아이템</label>
-                <label class="tab-btn close_img">시작하기</label>
-            </section>
-
             <div id="lv-guide" class="content"></div>
-
-            <div class="content">
-                도형을 클릭 후, 원하는 위치에 클릭하세요! 
-                <br>
-                공이 바닥에 떨어지면.. 큰일납니다!
-            </div>
+            <label class="tab-btn close_img">시작하기</label>
             
-            <div class="content">
-                x2 - 공이 두배가됨<br>
-                Large - 공이 커짐<br>
-                small - 공이 작아짐<br>
-                faster - 공이 빨라짐<br>
-                slower - 공이 느려짐<br>
-                normal - 속성 초기화 (파괴 속성 동일)<br>
-            </div> 
-            <img id="profile" src="">
         </div>
     </div>
 
@@ -66,9 +49,7 @@
             </div>
         </div>
         <div id="game">
-            <div id ="game-home">
-                <!--<div id = "game-home-content" class = "popup-pre"></div>-->
-            </div>
+           
             <div id="time">
                 
             </div>
@@ -81,10 +62,10 @@
             <div id="game-screen">
                 <canvas id="myCanvas" width="960" height="500"></canvas>
                 <div id="item-bar">
-                    <div class="item"><img src="/resources/img/block.png" width="150px" height="50px"></div>
+                    <div class="item"><img src="/resources/img/farmer.png" width="150px" height="50px"></div>
                     <div class="next">
                         <img src="/resources/img/next.png" width="80px">
-                        <div class="next-item"><img  src="/resources/img/block.png" height="20px"></div>
+                        <div class="next-item"><img  src="/resources/img/farmer.png" height="20px"></div>
                     </div>
                 </div>
 
