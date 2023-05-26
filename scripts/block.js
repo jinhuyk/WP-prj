@@ -6,7 +6,6 @@ function collisionBlocks() {
             dx*=-1;
             blockPro();
             blockUp = false;
-            ouch.play();
             }
         }
         if(x+dx+ballRadius > blockX && x+dx-ballRadius < blockX+blockWidth){
@@ -14,7 +13,6 @@ function collisionBlocks() {
                 dy*=-1;
                 blockPro();
                 blockUp = false;
-                ouch.play();
             }
         }
     } 

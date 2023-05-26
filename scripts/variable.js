@@ -25,7 +25,7 @@ var dx = 2;
 var dy = -2;
 var ballRadius = 20;
 
-
+var itemSize = [150,100,50,25];
 var hard = false;
 
 //

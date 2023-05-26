@@ -40,7 +40,7 @@ $(document).ready(function(){
     });
 
     $("#volon").click(function(){
-        var audio=document.getElementById("audio");
+        var audio=document.getElementById("audio2");
         
         if(audio.paused){
             audio.play();
@@ -49,7 +49,7 @@ $(document).ready(function(){
     })
 
     $("#voloff").click(function(){
-        var audio=document.getElementById("audio");
+        var audio=document.getElementById("audio2");
         audio.pause();
     })
 
@@ -57,8 +57,6 @@ $(document).ready(function(){
         window.location.replace("game.html");
     })
     $("#hardOn").click(function(){
-        var r = new Audio("/resources/aud/rrtong.mp3");
-        r.play();
         hard = true;
     })
 })

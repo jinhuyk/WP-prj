@@ -2,17 +2,18 @@
 var img;
 var brickImg;
 $(function(){
-    ouch = new Audio("/resources/aud/ouch.mp3");
-    wa = new Audio("/resources/aud/holy.mp3");
     img = new Image();
     brickImg = new Image();
     stone = new Image();
-    stone.src = '/resources/img/stone.png';
-    img.src = '/resources/img/block1.jpeg';
-    brickImg.src = '/resources/img/farmer.png';
+    stone.src = 'resources/img/stone.png';
+    img.src = 'resources/img/block1.jpeg';
+    brickImg.src = 'resources/img/farmer.png';
+
+
     $(window).resize(function(){
 		change_position($(".popup-pre"))
 	})
+
     $("#game-preview").fadeIn();
     change_position($(".popup-pre"));
     showScript();
@@ -23,53 +24,99 @@ $(function(){
         $("#game-preview").fadeOut();
         $("#game-scn").show();
     });
-    $("#lv1").css({"background":"url(./resources/img/lv1.jpeg)"});
-    $("#lv2").css({"background":"url(./resources/img/lv2.jpeg)"});
-    $("#lv3").css({"background":"url(./resources/img/lv3.jpeg)"});
+    $("#lv1").css({"background":"url(resources/img/lv1.jpeg)"});
+    $("#lv2").css({"background":"url(resources/img/lv2.jpeg)"});
+    $("#lv3").css({"background":"url(resources/img/lv3.jpeg)"});
     $(".game-level-button").css({"background-size": "cover"});
+
+
     $(".game-level-button").each(function(){
         $(this).click(function(){
             
-            change_position($(".popup-pre"));
-            $("#game-guide").show();
+            
             if($(this).attr("id") == "lv1"){
-                
-                $("#lv-guide").append(scriptlv1);
-                $(".close_img").click(function(){
-                    $("#game-guide").hide();
-                    level= 1;
-                    setLevel();
-                    startGame();
-
-                });
-                
+                level= 1;
+                getLevel()
             }
             if($(this).attr("id") == "lv2"){
-                
-                $("#lv-guide").append(scriptlv2);
-                $(".close_img").click(function(){
-                    $("#game-guide").hide();
-                    level= 2;
-                    setLevel();
-                    startGame();
-
-                });
+                level=2;
+                getLevel();
             }
             if($(this).attr("id") == "lv3"){
-                
-                $("#lv-guide").append(scriptlv3);
-                $(".close_img").click(function(){
-                    $("#game-guide").hide();
-                    level= 3;
-                    setLevel();
-                    startGame();
-
-                });
+                level = 3;
+                getLevel();
             }
-            $("#game-level").hide();
+            
         })
     })
-    
+
+    function getLevel(){
+        
+        change_position($(".popup-pre"));
+        
+        $("#game-guide").show();
+        
+        if(level == 1){
+            $("#lv-guide").html(scriptlv1);
+            $(".close_img").click(function(){
+                $("#game-guide").hide();
+                $("#myCanvas").css({"background-image":"url(resources/img/lv1background.jpeg)"});
+                img.src = 'resources/img/block1.jpeg';
+                min= 5; sec= 30;
+                timer = setInterval(setTime, 1000);
+                update_score = 1;
+                life_count = 5;
+                damage_count = 0;
+                //p_attack = 0;
+                brickColumnCount= 1;
+                brickRowCount = 1;
+                setLife();
+                brickInit();
+                startGame();
+
+            });
+        }
+        if(level == 2){
+            $("#lv-guide").html(scriptlv2);
+            $(".close_img").click(function(){
+                $("#game-guide").hide();
+                $("#myCanvas").css({"background-image":"url(resources/img/lv2background.jpeg)"});
+                img.src = 'resources/img/block2.jpeg';
+                min= 5; sec= 30;
+                timer = setInterval(setTime, 1000);
+                update_score = 1;
+                life_count = 5;
+                damage_count = 0;
+                //p_attack = 0;
+                brickColumnCount= 1;
+                brickRowCount = 1;
+                setLife();
+                brickInit();
+                startGame();
+
+            });
+        }
+        if(level == 3){
+            $("#lv-guide").html(scriptlv3);
+            $(".close_img").click(function(){
+                $("#game-guide").hide();
+                $("#myCanvas").css({"background-image":"url(resources/img/background2.jpeg)"});
+                img.src = 'resources/img/block3.jpeg';
+                min= 5; sec= 30;
+                update_score = 1;
+                life_count = 5;
+                damage_count = 0;
+                //p_attack = 0;
+                brickColumnCount= 1;
+                brickRowCount = 1;
+                setLife();
+                brickInit();
+                startGame();
+
+            });
+        }
+        $("#game-level").hide();
+    }
   
     
     $("#go-back").click(function(){
@@ -82,30 +129,21 @@ $(function(){
     
     $("#game-result-lose h2:nth-of-type(1)").click(function(){
         score = 0;
-        $("#game-overview").fadeOut();
-        $("#game").show();
-        setLevel();
-        startGame();
+        getLevel();
     })
     $("#game-result-lose h2:nth-of-type(2)").click(function(){
-        $("#game-overview").fadeOut();
         window.location.replace("main.html");
     })
     
     $("#game-result-12 h2:nth-of-type(1)").click(function(){
-        level++;
-        $("#game-overview").fadeOut();
-        $("#game").show();
-        setLevel();
-        startGame();
+        level = (level ==3) ? 3:level+1;
+        getLevel();
     })
     $("#game-result-12 h2:nth-of-type(2)").click(function(){
-        $("#game-overview").fadeOut();
         window.location.replace("main.html");
     })
 
     $("#game-result-3").click(function(){
-        $("#game-overview").fadeOut();
         window.location.replace("main.html");
     })
     
@@ -115,14 +153,18 @@ $(function(){
 
 function startGame(){
     clear = false;
+    $("#game-overview").hide();
     $("#game-startview").show();
+    
     setTimeout(function(){
-        calc = setInterval(setScore,10);  
-        audio.reload;
-        audio.play();
         $("#game-startview").fadeOut();
+        calc = setInterval(setScore,10);  
+        timer = setInterval(setTime, 1000);
+        x = canvas.width/2;
+        y = canvas.height-30;
+        dx = 2;
+        dy = -2;
         $("#game").fadeIn();
-        
         shuffleItem();
         gameTimer = setInterval(draw, 10);
     },500);
@@ -148,107 +190,19 @@ function shuffleItem(){
     blockShuffleTimer = setInterval(shuffleItemHandler,2000);
 }
 
-function setLevel(){
-    if(level == 1){
-        audio = new Audio("/resources/aud/lv1ma.mp3");
-        audio.volume = 0.3;
-        audio.loop = true;
-        ef = new Audio("/resources/aud/lv1ef.wav");
-        $("#myCanvas").css({"background-image":"url(./resources/img/lv1background.jpeg)"});
-        
-        min= 5; sec= 30;
-        timer = setInterval(setTime, 1000);
-        update_score = 1;
-        life_count = 5;
-        damage_count = 0;
-        //p_attack = 0;
-        brickColumnCount= 1;
-        brickRowCount = 1;
-        if(hard == true){
-            min = 2;
-            ballRadius = 10;
-            dx = 5;
-            dy = -5;
-        }
-        setLife();
-        brickInit();
-    }
-    else if(level == 2){
-        audio = new Audio("/resources/aud/lv2ma.mp3");
-        audio.volume = 0.3;
-        audio.loop = true;
-        ef = new Audio("/resources/aud/lv2ef.mp3");
-        img.src = '/resources/img/block2.jpeg';
-        $("#myCanvas").css({"background-image":"url(./resources/img/lv2background.jpeg)"});
-        $("#lv-guide").append(scriptlv2);
-        min= 5; sec= 30;
-        timer = setInterval(setTime, 1000);
-        update_score = 1;
-        life_count = 5;
-        damage_count = 0;
-        dx = 4;
-        dy = -4;
-        //p_attack = 0;
-        brickColumnCount= 10;
-        brickRowCount = 2;
-        if(hard == true){
-            min = 2;
-            ballRadius = 10;
-            dx = 5;
-            dy = -5;
-        }
-        setLife();
-        brickInit();
-    }
-    else{
-        audio = new Audio("/resources/aud/lv3ma.mp3");
-        audio.volume = 0.3;
-        audio.loop = true;
-        ef = new Audio("/resources/aud/lv3ef.mp3");
-        img.src = '/resources/img/block3.jpeg';
-        $("#myCanvas").css({"background-image":"url(./resources/img/background.jpeg)"});
-        $("#lv-guide").append(scriptlv3);
-        min= 5; sec= 30;
-        timer = setInterval(setTime, 1000);
-        update_score = 1;
-        life_count = 5;
-        damage_count = 0;
-        dx = 5;
-        dy = -5;
-        //p_attack = 0;
-        brickColumnCount= 10;
-        brickRowCount = 3;
-        if(hard == true){
-            min = 2;
-            ballRadius = 10;
-            dx = 5;
-            dy = -5;
-        }
-        setLife();
-        brickInit();
-    }
-}
 
 function setTime(){
-    if(sec == 0 && min == 0){
-        clearInterval(timer);
-        clear = false;
-    }
     sec--;
-    if(sec == 0){
-       min--;
-       sec = 59;
-    }
-    document.getElementById("time").innerHTML = "제한시간: " +min+":"+(sec<10 ? 0+sec : sec);
+    if(sec == 0){min--;sec = 59;}
+    document.getElementById("time").innerHTML = "제한시간: " +min+":"+(sec<10 ? "0"+sec : sec);
 }
 
 function setScore(){
-    if(life_count == 0 || (min == 0 && sec == 0)) clearInterval(calc);
-    //공이 블럭을 맞췄을 때 score 획득
     document.getElementById("score").innerHTML = "SCORE  " + score;
 }
 
 function setLife(){
+    $("#life").html("");
     for(var i=0;i<life_count;i++){
         var create_img = document.createElement('img');
         $(create_img).attr("class","l_img");
@@ -284,82 +238,80 @@ function showScript(){
         page++;
     },2000);
 
-    
-    
 }
 
-var itemSize = [150,100,50,25];
+
 
 function gameOver(){
     if(life_count == 0 || (min == 0 && sec == 0)){
-        clear = false;
+        clearInterval(calc);
+        clearInterval(timer);
         clearInterval(gameTimer);
         $("#game").hide();
         $("#game-overview").fadeIn();
         setGameResult();
-        showResult();
     }
     else if(clear == true){
         clearInterval(gameTimer);
+        clearInterval(calc);
+        clearInterval(timer);
         $("#game").hide();
         $("#game-overview").fadeIn();
         setGameResult();
-        showResult();
     }
     
 }
 
 function bricksCheck(){
+    var flag = true;
     for(var c=0; c<brickColumnCount; c++) {
         for(var r=0; r<brickRowCount; r++) {
-            if(bricks[c][r].v == 0) clear = true; 
+            if(bricks[c][r].v == 1){
+                flag = false;
+                break;
+            }
         }
     }
-    for(var c=0; c<brickColumnCount; c++) {
-        for(var r=0; r<brickRowCount; r++) {
-            if(bricks[c][r].v == 1) clear = false; 
-        }
-    }
+    if(flag == true) clear = true;
 }
 
 function setGameResult(){
-    closeGameResult();
-    $("#game-result").show();
+    $("#game-result").hide();
+    $("#score-result").hide();
+    
     document.getElementById("score-result").innerHTML = "SCORE:" + score;
+    if(clear==true)
+    {
+        var img = $("#game-result").find("img");
+        img.attr("src","resources/img/win.png");
+    }
+    else
+    {
+        var img = $("#game-result").find("img");
+        img.attr("src","resources/img/lose.png");
+    }
+    $("#game-result").show();
     $("#score-result").show();
+    
     if(clear == false){
+        $("#game-result-3").hide();
+        $("#game-result-12").hide();
         $("#game-result-lose").show();
     }
     else{
         if(level == 1 || level == 2){
+            $("#game-result-lose").hide();
+            $("#game-result-3").hide();
             $("#game-result-12").show();
         }
         else if(level == 3){
+            $("#game-result-lose").hide();
+            $("#game-result-12").hide();
             $("#game-result-3").show();
         }
     }
 }
 
-function closeGameResult(){
-    $("#game-result").hide();
-    $("#score-result").hide();
-    $("game-result-lose").hide();
-    $("game-result-12").hide();
-    $("game-result-3").hide();
-}
-
-function showResult(){
-    if(clear==true)
-    {
-        var img = $("#game-result").find("img");
-        img.attr("src","/resources/img/win.png");
-    }
-    else
-    {
-        var img = $("#game-result").find("img");
-        img.attr("src","/resources/img/lose.png");
-    }
-}
 var script = [
     "어느 평화로운 농장에는...<br><br>",
     "젊은 공돌이 농부가 거위 건덕이, 고양이 만쥬, 그리고 황소 쿠(KU)를 데리고 살고 있었다.<br><br>",
