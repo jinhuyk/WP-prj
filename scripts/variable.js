@@ -30,6 +30,7 @@ var hard = false;
 
 //
 var level;
+//var startTimer;
 
 //
 var timer;
@@ -39,7 +40,7 @@ var sec = 60;
 //
 var calc;
 var score = 0;
-var update_score = 0;
+var update_score;
 
 var audio;
 var ouch;
@@ -51,10 +52,7 @@ var damage_count;
 
 var stone;
 
-// 
-var attack = 0;
-var manzu = 2;
-var ku_skill = 3;
+//
 
 var timeScript;
 
@@ -65,3 +63,5 @@ var gameTimer;
 
 //게임 클리어 확인 변수
 var clear = false;
+
+var isRun = false;

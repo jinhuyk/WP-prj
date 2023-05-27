@@ -22,17 +22,13 @@ function collisionBricks() {
                         }
                         dx*=-1;
                         b.v = 0;
-                        score += update_score;  //공으로 블럭을 맞추면 스코어 획득
-                        //playPro(b);
-                        //attack(b);
+                        score += update_score; 
+                         //공으로 블럭을 맞추면 스코어 획득
                     }
                     if(x+dx+ballRadius > b.x && x+dx-ballRadius < b.x+brickWidth){
                         dy *=-1;
                         b.v=0;
                         score += update_score;
-
-                        //playPro(b);
-                        //attack(b);
                     }
                 }
             }

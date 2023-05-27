@@ -2,12 +2,16 @@
 var img;
 var brickImg;
 $(function(){
+    audio = new Audio('resources/aud/lv1ma.mp3');
+    ouch = new Audio('resources/aud/holy.mp3');
+    wa = new Audio('resources/aud/ouch.mp3');
     img = new Image();
     brickImg = new Image();
     stone = new Image();
     stone.src = 'resources/img/stone.png';
-    img.src = 'resources/img/block1.jpeg';
+    img.src = 'resources/img/bricka.png';
     brickImg.src = 'resources/img/farmer.png';
+
 
 
     $(window).resize(function(){
@@ -16,6 +20,7 @@ $(function(){
 
     $("#game-preview").fadeIn();
     change_position($(".popup-pre"));
+
     showScript();
 
 
@@ -53,22 +58,22 @@ $(function(){
     function getLevel(){
         
         change_position($(".popup-pre"));
-        
+        audio.src="resources/aud/flag.mp3";
+        audio.volume =0.2;
+        audio.play();
         $("#game-guide").show();
         
         if(level == 1){
-            $("#lv-guide").html(scriptlv1);
+            showGameScript(level);
             $(".close_img").click(function(){
                 $("#game-guide").hide();
-                $("#myCanvas").css({"background-image":"url(resources/img/lv1background.jpeg)"});
-                img.src = 'resources/img/block1.jpeg';
+                $("#myCanvas").css({"background-image":"url(resources/img/lv1background.png)"});
+                audio.src = 'resources/aud/lv1ma.mp3';
                 min= 5; sec= 30;
-                timer = setInterval(setTime, 1000);
-                update_score = 1;
+                update_score = Math.floor(Math.random()*10+1);
                 life_count = 5;
                 damage_count = 0;
-                //p_attack = 0;
-                brickColumnCount= 1;
+                brickColumnCount= 10;
                 brickRowCount = 1;
                 setLife();
                 brickInit();
@@ -77,19 +82,18 @@ $(function(){
             });
         }
         if(level == 2){
-            $("#lv-guide").html(scriptlv2);
+            showGameScript(level);
+            
             $(".close_img").click(function(){
                 $("#game-guide").hide();
-                $("#myCanvas").css({"background-image":"url(resources/img/lv2background.jpeg)"});
-                img.src = 'resources/img/block2.jpeg';
+                $("#myCanvas").css({"background-image":"url(resources/img/lv2background.png)"});
+                audio.src = 'resources/aud/lv2ma.mp3';
                 min= 5; sec= 30;
-                timer = setInterval(setTime, 1000);
-                update_score = 1;
-                life_count = 5;
+                update_score = Math.floor(Math.random()*30+1);
+                life_count = 4;
                 damage_count = 0;
-                //p_attack = 0;
-                brickColumnCount= 1;
-                brickRowCount = 1;
+                brickColumnCount= 10;
+                brickRowCount = 2;
                 setLife();
                 brickInit();
                 startGame();
@@ -97,18 +101,18 @@ $(function(){
             });
         }
         if(level == 3){
-            $("#lv-guide").html(scriptlv3);
+            showGameScript(level);
+            
             $(".close_img").click(function(){
                 $("#game-guide").hide();
-                $("#myCanvas").css({"background-image":"url(resources/img/background2.jpeg)"});
-                img.src = 'resources/img/block3.jpeg';
+                $("#myCanvas").css({"background-image":"url(resources/img/lv3background.png)"});
+                audio.src = 'resources/aud/lv3ma.mp3';
                 min= 5; sec= 30;
-                update_score = 1;
-                life_count = 5;
+                update_score = Math.floor(Math.random()*50+1);
+                life_count = 3;
                 damage_count = 0;
-                //p_attack = 0;
-                brickColumnCount= 1;
-                brickRowCount = 1;
+                brickColumnCount= 10;
+                brickRowCount = 3;
                 setLife();
                 brickInit();
                 startGame();
@@ -147,36 +151,52 @@ $(function(){
         window.location.replace("main.html");
     })
     
+   var muted=false;
 
+   $("#vol").click(function(){
+    
+     audio.muted = (audio.muted)? false: true;
+     var img = (audio.muted)? "resources/img/soundoff.png" : "resources/img/sound.png";
+     $("#vol").attr("src",img);
+     wa.muted = (wa.muted)? false: true;
 
+   })
 })
 
 function startGame(){
-    clear = false;
-    $("#game-overview").hide();
-    $("#game-startview").show();
-    
-    setTimeout(function(){
-        $("#game-startview").fadeOut();
-        calc = setInterval(setScore,10);  
-        timer = setInterval(setTime, 1000);
-        x = canvas.width/2;
-        y = canvas.height-30;
-        dx = 2;
-        dy = -2;
-        $("#game").fadeIn();
-        shuffleItem();
-        gameTimer = setInterval(draw, 10);
-    },500);
-
-
-    
+    if(isRun == false){
+        isRun = true;
+        clear = false;
+        console.log("s");
+        
+        $("#game-overview").hide();
+        $("#game-startview").show();
+        var startSong = new Audio("resources/aud/start.mp3");
+        startSong.play();
+        
+        
+        setTimeout(function() {
+            $("#game-startview").fadeOut();
+            calc = setInterval(setScore,10);  
+            timer = setInterval(setTime, 1000);
+            x = canvas.width/2;
+            y = canvas.height-30;
+            dx = 2;
+            dy = -2;
+            ballRadius = 20;
+            audio.volume = 0.3;
+            audio.loop = true;
+            audio.play();
+            $("#game").fadeIn();
+            shuffleItem();
+            gameTimer = setInterval(draw, 10);
+        },1500);
+    }
 }
 
 
 function shuffleItem(){
-    function shuffleItemHandler(){
-
+    blockShuffleTimer = setInterval(function(){
         if(blockUp == false){
             var now = $(".item").find('img');
             var next = $(".next-item").find('img');
@@ -186,8 +206,7 @@ function shuffleItem(){
             blockHeight = now.height();
             next.width(blockSize[Math.floor(Math.random()*4)]/3);
         }
-    }
-    blockShuffleTimer = setInterval(shuffleItemHandler,2000);
+    },1000);
 }
 
 
@@ -214,10 +233,9 @@ function setLife(){
 
 function resetLife(){   
     damage_count++;
-    for(var i=0;i<damage_count;i++){
-        var imgs = $("#life img").eq(i); 
-        imgs.attr("src", "resources/img/life1.png");
-    }
+    var imgs = $("#life img").eq(-damage_count); 
+    imgs.attr("src", "resources/img/life1.png");
+    
 }
 
 function change_position(obj){
@@ -228,10 +246,13 @@ function change_position(obj){
 
 
 function showScript(){
+    
     var page = 0;
+   
     timeScript = setInterval(function(){
         if(page == script.length-1){
             clearInterval(timeScript);
+            audio.pause();
             $("#keep-btn").text("계속하기");
         }
         document.getElementById("game-script").innerHTML += script[page];
@@ -243,26 +264,6 @@ function showScript(){
 
 
 function gameOver(){
-    if(life_count == 0 || (min == 0 && sec == 0)){
-        clearInterval(calc);
-        clearInterval(timer);
-        clearInterval(gameTimer);
-        $("#game").hide();
-        $("#game-overview").fadeIn();
-        setGameResult();
-    }
-    else if(clear == true){
-        clearInterval(gameTimer);
-        clearInterval(calc);
-        clearInterval(timer);
-        $("#game").hide();
-        $("#game-overview").fadeIn();
-        setGameResult();
-    }
-    
-}
-
-function bricksCheck(){
     var flag = true;
     for(var c=0; c<brickColumnCount; c++) {
         for(var r=0; r<brickRowCount; r++) {
@@ -273,26 +274,46 @@ function bricksCheck(){
         }
     }
     if(flag == true) clear = true;
-}
 
+    if(life_count == 0 || (min == 0 && sec == 0) || clear == true){
+        isRun = false;
+        $("#game").hide();
+        $("#game-overview").fadeIn();
+        setGameResult();
+    }
+    
+}
 function setGameResult(){
+    clearInterval(calc);
+    clearInterval(timer);
+    clearInterval(gameTimer);
+    clearInterval(blockShuffleTimer);
+
+    audio.pause();
+    audio.currentTime = 0;
+    
+    
     $("#game-result").hide();
     $("#score-result").hide();
-    
+    $("#script-result").hide();
     document.getElementById("score-result").innerHTML = "SCORE:" + score;
     if(clear==true)
     {
-        var img = $("#game-result").find("img");
-        img.attr("src","resources/img/win.png");
+        audio.src = "resources/aud/clear.mp3";
+        $("#logo-result").attr("src","resources/img/win.png");
+        if(level == 3) $("#script-result").html("농장을 되찾았다!!<br><br>이제 두다리 쭉 뻗고 자야겠군!");
+        else $("#script-result").text("해치웠나..?");
     }
     else
     {
-        var img = $("#game-result").find("img");
-        img.attr("src","resources/img/lose.png");
+        audio.src = "resources/aud/gameover.mp3";
+        $("#logo-result").attr("src","resources/img/lose.png");
+        $("#script-result").text("실패했나..?");
     }
+    audio.play();
     $("#game-result").show();
     $("#score-result").show();
-    
+    $("#script-result").show();
     if(clear == false){
         $("#game-result-3").hide();
         $("#game-result-12").hide();
@@ -320,19 +341,45 @@ var script = [
     "그런데 옆 주인집을 보니, 혼자서 에어컨을 틀고 여유롭게 누워있는 농부를 발견한다!!!<br><br>",
     "이에 화가 난 동물들은...!<br><br>",
     "<br><strong>반란을 결심하고 성공한다.</strong><br><br><br>",
-    "쫓겨난 농부(플레이어)는 의기양양한 동물들을 보고서 좌절하지만...<br><br>",
-    "다시 자신의 농장을 되찾기 위해 힘차게 길을 나선다...<br><br>"
+    "농장은 건덕이, 만쥬, 쿠가 만들어논 벽돌 바리게이트에 당황하지만<br><br>",
+    "다시 자신의 농장을 되찾기 위해 힘차게 벽돌을 부셔 나간다...<br><br>"
 ]
 
+function showGameScript(lv){
+    var scp = (lv==1)?scriptlv1 : ((lv==2)? scriptlv2 : scriptlv3);
+    $("#lv-guide").html("");
+    var page = 0;
+    timeScript = setInterval(function(){
+        if(page == scp.length-1){
+            clearInterval(timeScript);
+        }
+        
+        document.getElementById("lv-guide").innerHTML += scp[page];
+        page++;
+    },2000);
 
-var scriptlv1 = 
-    "첫번쨰 텃밭에는 건덕이가 있군..<br>후딱 해치우고 내 농장을 되찾겠어!";
+}
 
-var scriptlv2 =
-    "아니 건덕이보다 더 짜증나는 만쥬잖아<br>나는 빨리 시원하게 쉬고싶다!";
+var scriptlv1 = [
+    "첫번째 텃밭에는 건덕이가 있군..<br><br>",
+    "다행이 건덕이가 만들어논 벽돌은 꽤나 허술하다<br><br>",
+    "저 멀리서 돌을 던져서 벽돌을 파괴해야겠어!<br><br>",
     
-var scriptlv3 =
+    "좋아 가보자고!"
+]
+var scriptlv2 =[
+    "이번엔 만쥬잖아..!<br><br>",
+    "만쥬는 건덕이보다 조금 까다롭군, 역시 벽돌이 더 많아졌어<br><br>",
+    "여긴 바닥에 돌 크기가 여러개네.. 랜덤으로 돌을 가져와야겠는걸!<br><br>",
+    "좋아 가보자고!"
+]
+
     "산 넘어 산이군 이번엔 뭐야.. !<br>아니 쿠 잖아 이런 해치우자!";
                     
-    
-    
+var scriptlv3 =[
+    "드디어 농장에 거의 다 온것같다...<br><br>",
+    "근데 이번엔 ... 쿠 잖아!<br><br>",
+    "힘도 쎄서 그런지 벽돌 수도 엄청 많아졌군<br><br>",
+    "왠지.. 똑같은 속도로 돌을 못던질 것같은데..?<br><br>",
+    "좋아 가보자고!"
+]

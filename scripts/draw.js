@@ -67,6 +67,7 @@ canvas.onmousemove = (function(e){
 
 
 function draw(){
+    gameOver();
     ctx.clearRect(0,0,canvas.width, canvas.height);
     drawBall();
     if(blockUp === true){
@@ -77,10 +78,11 @@ function draw(){
     
     collisionBricks();
     collisionBlocks();
+    
     x += dx;
     y += dy;
-    bricksCheck();
-    gameOver();
+    
+    
     
 }
 
