@@ -1,4 +1,7 @@
 $(document).ready(function(){
+    
+
+
     $(window).resize(function(){
 		change_position($(".popup"))
 	})
@@ -42,6 +45,7 @@ $(document).ready(function(){
     $("#volon").click(function(){
         var audio=document.getElementById("audio2");
         
+        
         if(audio.paused){
             audio.play();
         }
@@ -50,7 +54,17 @@ $(document).ready(function(){
 
     $("#voloff").click(function(){
         var audio=document.getElementById("audio2");
+        
         audio.pause();
+    })
+
+    $("#blue").click(function(){
+        window.localStorage.setItem('char', false)
+
+    })
+
+    $("#pink").click(function(){
+        window.localStorage.setItem('char', true)
     })
 
     $("#game-start-btn").click(function(){

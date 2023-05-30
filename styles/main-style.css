@@ -122,6 +122,10 @@ footer{
     display: none;
 }
 
+h2:hover{
+    cursor: pointer;
+}
+
 input:nth-of-type(1):checked ~ div:nth-of-type(1) {
 	display: block;
 }

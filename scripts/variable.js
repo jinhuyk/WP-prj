@@ -1,6 +1,7 @@
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
-
+var img;
+var brickImg;
 //brick
 var brickColumnCount = 0;
 var brickRowCount = 0;
@@ -65,3 +66,4 @@ var gameTimer;
 var clear = false;
 
 var isRun = false;
+

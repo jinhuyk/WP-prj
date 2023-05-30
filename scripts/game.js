@@ -1,19 +1,27 @@
 
-var img;
-var brickImg;
+
 $(function(){
-    audio = new Audio('resources/aud/lv1ma.mp3');
-    ouch = new Audio('resources/aud/holy.mp3');
-    wa = new Audio('resources/aud/ouch.mp3');
+    audio = new Audio();
+    ouch = new Audio();
+    wa = new Audio();
+
+
     img = new Image();
     brickImg = new Image();
     stone = new Image();
     stone.src = 'resources/img/stone.png';
     img.src = 'resources/img/bricka.png';
-    brickImg.src = 'resources/img/farmer.png';
 
 
-
+    
+    var char =window.localStorage.getItem('char');
+    console.log(char)
+    brickImg.src = (char == 'true')? 'resources/img/farmer-w.png': 'resources/img/farmer.png';
+    $("#next-img").attr("src", (char == 'true')? 'resources/img/farmer-w.png': 'resources/img/farmer.png' );
+    $("#next-img2").attr("src", (char == 'true')? 'resources/img/farmer-w.png': 'resources/img/farmer.png' );
+    audio.src = 'resources/aud/lv1ma.mp3';
+    ouch.src = 'resources/aud/holy.mp3';
+    wa.src  = 'resources/aud/ouch.mp3';
     $(window).resize(function(){
 		change_position($(".popup-pre"))
 	})
@@ -326,6 +334,7 @@ function setGameResult(){
             $("#game-result-12").show();
         }
         else if(level == 3){
+            $("#game-overview").css({"background-image":"url(resources/img/gameBackgroundfinish.jpg)"});
             $("#game-result-lose").hide();
             $("#game-result-12").hide();
             $("#game-result-3").show();
