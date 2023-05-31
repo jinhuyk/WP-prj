@@ -15,12 +15,12 @@ $(function(){
 
     
     var char =window.localStorage.getItem('char');
-    console.log(char)
+    
     brickImg.src = (char == 'true')? 'resources/img/farmer-w.png': 'resources/img/farmer.png';
     $("#next-img").attr("src", (char == 'true')? 'resources/img/farmer-w.png': 'resources/img/farmer.png' );
     $("#next-img2").attr("src", (char == 'true')? 'resources/img/farmer-w.png': 'resources/img/farmer.png' );
     audio.src = 'resources/aud/lv1ma.mp3';
-    ouch.src = 'resources/aud/holy.mp3';
+    ouch.src = 'resources/aud/wa.mp3';
     wa.src  = 'resources/aud/ouch.mp3';
     $(window).resize(function(){
 		change_position($(".popup-pre"))
@@ -96,8 +96,8 @@ $(function(){
                 $("#game-guide").hide();
                 $("#myCanvas").css({"background-image":"url(resources/img/lv2background.png)"});
                 audio.src = 'resources/aud/lv2ma.mp3';
-                min= 5; sec= 30;
-                update_score = Math.floor(Math.random()*30+1);
+                min= 4; sec= 30;
+                update_score = Math.floor(Math.random()*10+30);
                 life_count = 4;
                 damage_count = 0;
                 brickColumnCount= 10;
@@ -115,8 +115,8 @@ $(function(){
                 $("#game-guide").hide();
                 $("#myCanvas").css({"background-image":"url(resources/img/lv3background.png)"});
                 audio.src = 'resources/aud/lv3ma.mp3';
-                min= 5; sec= 30;
-                update_score = Math.floor(Math.random()*50+1);
+                min= 3; sec= 30;
+                update_score = Math.floor(Math.random()*10+50);
                 life_count = 3;
                 damage_count = 0;
                 brickColumnCount= 10;
@@ -159,14 +159,14 @@ $(function(){
         window.location.replace("main.html");
     })
     
-   var muted=false;
-
-   $("#vol").click(function(){
+   
+   $("#vol").click(function(){ 
     
      audio.muted = (audio.muted)? false: true;
      var img = (audio.muted)? "resources/img/soundoff.png" : "resources/img/sound.png";
      $("#vol").attr("src",img);
      wa.muted = (wa.muted)? false: true;
+     ouch.muted = (ouch.muted)? false: true;
 
    })
 })
@@ -304,7 +304,14 @@ function setGameResult(){
     $("#game-result").hide();
     $("#score-result").hide();
     $("#script-result").hide();
-    document.getElementById("score-result").innerHTML = "SCORE:" + score;
+    
+    if(window.localStorage.getItem('max_score') == null) {
+        window.localStorage.setItem('max_score', JSON.stringify({score:0}));
+    }
+    var max_score = JSON.parse(window.localStorage.getItem('max_score'));
+    window.localStorage.setItem('max_score',JSON.stringify({score: (max_score.score >= score)? max_score.score : score}));
+
+    document.getElementById("score-result").innerHTML = "SCORE:" + score + "<br>"+"MAX SCORE:"+JSON.parse(window.localStorage.getItem('max_score')).score;
     if(clear==true)
     {
         audio.src = "resources/aud/clear.mp3";
@@ -329,6 +336,7 @@ function setGameResult(){
     }
     else{
         if(level == 1 || level == 2){
+            $("#game-overview").css({"background-image":(level==1)?"url(resources/img/gameBackground1.jpg)":"url(resources/img/gameBackground2.jpg)"});
             $("#game-result-lose").hide();
             $("#game-result-3").hide();
             $("#game-result-12").show();
