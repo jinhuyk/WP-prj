@@ -10,10 +10,8 @@ var brickHeight = 40;
 var brickPadding = 10;
 var brickOffsetTop = 30;
 var brickOffsetLeft = 50;
-var brickPro = 6;
 var bricks = [];
 //block
-var blockRate =1;
 var blockHeight = 50;
 var blockWidth = 250; 
 var blockX, blockY;
@@ -27,7 +25,7 @@ var dy = -2;
 var ballRadius = 20;
 
 var itemSize = [150,100,50,25];
-var hard = false;
+//var hard = false;
 
 //
 var level;
@@ -47,6 +45,8 @@ var audio;
 var ouch;
 var ef;
 var wa;
+
+
 //
 var life_count;
 var damage_count;

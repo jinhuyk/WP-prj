@@ -39,6 +39,8 @@ function drawSampleBlock(bX,bY){
     ctx.drawImage(brickImg, bX, bY, blockWidth, blockHeight);
     ctx.closePath();
 }
+
+// 슬라이드 설치
 $(canvas).on("click",function(e){
     if(blockUp === false){
         
@@ -53,6 +55,8 @@ $(canvas).on("click",function(e){
 
     }
 })
+
+// 슬라이드 미리보기
 canvas.onmousemove = (function(e){
     if(blockUp==false){
         var l = $(this).offset().left;

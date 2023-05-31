@@ -27,13 +27,6 @@ $(document).ready(function(){
         $(content).show();
     });
 
-    // $(".popup").click(function(){
-    //     console.log("pop");
-    //     var pop=$(this);
-    //     pop.hide();
-       
-    // });
-
     $("#game-start-btn").click(function(){
         
     });
