@@ -211,8 +211,8 @@ function getLevel(){
             update_score = Math.floor(Math.random()*10+50);
             life_count = 3;
             damage_count = 0;
-            brickColumnCount= 1;
-            brickRowCount = 1;
+            brickColumnCount= 10;
+            brickRowCount = 3;
             setLife();
             brickInit();
             startGame();
